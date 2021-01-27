@@ -1,0 +1,5 @@
+.b-img-container {
+    display: flex;
+    background-size: cover;
+    background-position: center;
+}

@@ -1,0 +1,14 @@
+.home-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    padding-right: 200px;
+    font-family: poppins;
+  }
+  
+  .home-section {
+    display: flex;
+    flex-direction: column;
+    min-width: 280px;
+    margin: auto 0px auto auto;
+  }

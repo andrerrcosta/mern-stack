@@ -1,0 +1,38 @@
+.register-content {
+  display: flex;
+  flex-direction: column;
+  min-width: 280px;
+  border: 1px solid #e5e5e5;
+  padding: 15px;
+  margin: auto 0px auto auto;
+  border-radius: 5px;
+  background: #ffffff;
+  justify-content: space-between;
+  min-height: 70%;
+}
+
+.register-header {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-options {
+  display: flex;
+  justify-content: center;
+  font-size: 12px;
+  margin: 5px;
+}
+
+.link {
+  font-family: poppins;
+  cursor: pointer;
+  color: #24385b;
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
