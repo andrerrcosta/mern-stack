@@ -9,6 +9,6 @@ Stack (Until now):
 
 Express: { JsonWebToken, hapi/joi, winston (for log persistence), bcrypt, dotenv }
 
-React: { react-router-dom, RxJs, NobbleWallet },
+React: { RxJs, NobbleWallet },
 
 Docker-compose, mongo-db;
