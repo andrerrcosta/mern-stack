@@ -12,8 +12,7 @@ export default class LogTrack extends React.Component {
         super(props);
         this.state = {
             logs = this.props.logs,
-            spacing = this.props.spacing,
-            background = this.props.background,
+            spacing = Undefined(this.props.spacing, 75),
             colorScheme = Undefined(this.props.colorScheme, []),
             componentId = IDService.getNewId("LogTrack")
         }
