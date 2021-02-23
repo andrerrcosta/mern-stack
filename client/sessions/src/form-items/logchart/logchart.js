@@ -6,13 +6,14 @@ export default class LogChart extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            logs = []
+            logs = this.props.logs
         }
     }
 
     render() {
+        const $ = this.state;
 
-        const logTrack = this.state.logs.map((log) => {
+        const logTrack = $.logs.map((log) => {
             return <Product key={data.id} data={data} />
         });
 
@@ -20,6 +21,6 @@ export default class LogChart extends React.Component {
             <div className="logchart-container">
                 {logTrack}
             </div>
-            );
+        );
     }
 }

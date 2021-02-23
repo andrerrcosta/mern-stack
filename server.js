@@ -27,6 +27,9 @@ app.use(accessControl);
 app.use("/auth", authRoutes);
 app.use("/admin", adminRoutes);
 
+/**
+ * Testing index
+ */
 
 app.get("/", (req, res) => {
     logger.info("HOME");
