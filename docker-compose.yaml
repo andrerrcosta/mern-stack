@@ -10,8 +10,8 @@ services:
   #   # linking app container to mongo container
   #   links:
   #     - mongo
-  mongo:
-    container_name: mongo
-    image: mongo
-    ports:
-      - 28017:28017
+  # mongo:
+  #   container_name: mongo
+  #   image: mongo
+  #   ports:
+  #     - 28017:28017

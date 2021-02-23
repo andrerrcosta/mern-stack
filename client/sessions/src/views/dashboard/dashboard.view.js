@@ -8,7 +8,6 @@ export default class Dashboard extends StorageComponent {
         console.warn("DASHBOARD::unmount");
     }
 
-
     render() {
         return (
             <div className="dashboard-container">

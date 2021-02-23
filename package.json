@@ -3,7 +3,8 @@
     "version": "1.0.0",
     "main": "server.js",
     "scripts": {
-        "start": "node server.js"
+        "client": "cd client/sessions && npm start",
+        "start": "concurrently \"nodemon server.js\" \"npm run client\""
     },
     "keywords": [],
     "author": "Hummel",
