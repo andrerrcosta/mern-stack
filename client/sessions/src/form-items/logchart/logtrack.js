@@ -5,6 +5,7 @@ import { isValid, Undefined } from "../../common/utils/optional";
 import { getElement } from "../../common/utils/dom.functions";
 import Stylist from "../../common/services/css.service";
 import Customizable from "../../common/interfaces/customizable";
+import createColorScheme from "../../common/models/color-scheme";
 
 export default class LogTrack extends Customizable {
 
@@ -13,7 +14,7 @@ export default class LogTrack extends Customizable {
         this.state = {
             logs = Undefined(this.props.logs, []),
             spacing = Undefined(this.props.spacing, 75),
-            colorScheme = Undefined(this.props.colorScheme, []),
+            colorScheme = createColorScheme(this.props.colorScheme)
         }
     }
 
@@ -22,10 +23,10 @@ export default class LogTrack extends Customizable {
         let container = getElement($.componentId.uid);
         if (isValid(container)) {
             container.style = Stylist
-                .addProperty("--colorA-logtrack", $.colorScheme[0])
-                .addProperty("--colorB-logtrack", $.colorScheme[1])
-                .addProperty("--colorC-logtrack", $.colorScheme[2])
-                .addProperty("--colorD-logtrack", $.colorScheme[3])
+                .addProperty("--colorA-logtrack", $.colorScheme.getColor(0))
+                .addProperty("--colorB-logtrack", $.colorScheme.getColor(1))
+                .addProperty("--colorC-logtrack", $.colorScheme.getColor(2))
+                .addProperty("--colorD-logtrack", $.colorScheme.getColor(3))
                 .addStyle("width", Px($.spacing * $.logs.length))
                 .getStyle("CSS_STYLE_DECLARATION");
         }

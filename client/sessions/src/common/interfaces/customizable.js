@@ -40,7 +40,7 @@ export default class Customizable extends Component {
                         padding: 10px;"
                     >
                             <a style="font-size: 9px; color: black;">
-                            float-box.js
+                            ${this._componentName}.js
                             </a>
                             <a style="color: black; font-size: 12px">
                                 ${errorMessage}
