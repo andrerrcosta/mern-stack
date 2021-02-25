@@ -96,18 +96,11 @@ export class FloatBox extends Customizable {
         }
     }
 
-    registerAction(action) {
-        console.log("FLOATBOX::registerAction");
-        this.props.action({action: action, value: this.state.show})
-    }
-
     render() {
         const $ = this.state;
         return (
             <div className={this.addClass("container")} 
                 id={this._uid} style={{ display: "none" }} 
-                onMouseDown={() => this.registerAction("mouse-down")}
-                onMouseUp={() => this.registerAction("mouse-up")}
             >
                 {this.renderChildren()}
                 {/* {this.parent.style.cssText} */}
