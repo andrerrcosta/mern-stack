@@ -6,6 +6,11 @@ export const isValid = (...elements) => {
     return true;
 }
 
+export const isValidElement = (id) => {
+    if(id === null || id === undefined || id === "") return false;
+    return document.getElementById(id) !== null;
+}
+
 export const Undefined = (valueA, valueB) => {
     return valueA !== undefined ? valueA : valueB;
 }

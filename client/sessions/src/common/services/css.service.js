@@ -1,6 +1,6 @@
 import { isValid } from "../utils/optional";
 
-function StylistElement() {
+function createStylistElement() {
 
     let element = document.createElement("div");
 
@@ -20,28 +20,28 @@ function StylistElement() {
             return output;
         }
     }
-
 }
+
+const element = createStylistElement();
 
 export default class Stylist {
 
-    static element = StylistElement();
 
     static addStyle(tag, value) {
         if (isValid(tag, value))
-            Stylist.element.addStyle(tag, value);
+            element.addStyle(tag, value);
         return this;
     }
 
     static addCssText(cssText) {
         if (isValid(cssText))
-            Stylist.element.addCssText(cssText);
+            element.addCssText(cssText);
         return this;
     }
 
     static addProperty(tag, value) {
         if(isValid(tag, value)) {
-            Stylist.addProperty(tag, value);
+            element.addProperty(tag, value);
         }
         return this;
     }
@@ -50,10 +50,10 @@ export default class Stylist {
         if (as === 'CSS_STYLE_DECLARATION' || as === 'STRING') {
             switch (as) {
                 case "CSS_STYLE_DECLARATION":
-                    return Stylist.element.getStyle();
+                    return element.getStyle();
 
                 case "STRING":
-                    return Stylist.element.getStyle().cssText;
+                    return element.getStyle().cssText;
             }
         }
         console.error("The Parameter must be 'CSS_STYLE_DECLARATION' or 'STRING'");

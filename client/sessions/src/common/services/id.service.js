@@ -2,7 +2,7 @@ import { ArrayMax } from "../utils/array.utils";
 import { isValid } from "../utils/optional";
 
 /**
- * oh... front end is so easy...
+ * 
  */
 
 function getIdMap() {
@@ -45,15 +45,15 @@ function getIdMap() {
     }
 }
 
+const stacks = getIdMap();
+
 export default class IDService {
 
-    static stacks = getIdMap();
-
     static getNewId = (stackName) => {
-        return this.stacks.getNewId(stackName);
+        return stacks.getNewId(stackName);
     }
 
     static removeId = (stackName, id) => {
-        return this.stacks.removeId(stackName, id);
+        return stacks.removeId(stackName, id);
     }
 }

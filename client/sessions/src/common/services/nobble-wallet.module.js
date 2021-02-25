@@ -1,8 +1,3 @@
-/**
- * Created By André R. R. Costa
- * https://www.nobblecrafts.com
- */
-
 import { Subject } from "rxjs";
 
 export function createWallet(name) {

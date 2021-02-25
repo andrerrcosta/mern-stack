@@ -3,8 +3,10 @@ import React from "react";
 import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-dom";
 import './App.css';
 import { NobbleWallet } from "./common/services/nobble-wallet.module";
+import NotFoundView from "./views/404/404";
 import Dashboard from "./views/dashboard/dashboard.view";
 import HomeView from "./views/home/home.view";
+import ZTest from "./views/ztest/ztest";
 
 class App extends React.Component {
 
@@ -28,7 +30,9 @@ class App extends React.Component {
         <Router>
           <Switch>
             <LoginRoute exact path="/" component={HomeView} auth={this.state.auth} />
+            <Route exact path="/test" component={ZTest} />
             <PrivateRoute exact path="/dashboard" component={Dashboard} auth={this.state.auth} />
+            <Route component={NotFoundView} />
           </Switch>
         </Router>
       </div>

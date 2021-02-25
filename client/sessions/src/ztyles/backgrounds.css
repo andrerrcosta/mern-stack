@@ -1,0 +1,9 @@
+.background-login {
+    background: url("http://localhost:3000/assets/background/tech002.jpg");
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    background-position: bottom;
+  }
+  

@@ -5,7 +5,6 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { NobbleWallet } from './common/services/nobble-wallet.module';
 
-// const Wallet = createWallet("authentication");
 NobbleWallet.addWallet("authentication");
 
 ReactDOM.render(

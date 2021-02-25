@@ -2,7 +2,6 @@ import Customizable from "../../interfaces/customizable";
 import { Pct, Percent } from "../../utils/formatters";
 import React from "react";
 import "./runnable-screen.css"
-import { addChildProperty } from "../../utils/dom.functions";
 
 export default class RunnableScreen extends Customizable {
 

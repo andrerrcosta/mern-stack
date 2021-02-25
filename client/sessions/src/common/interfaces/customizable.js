@@ -30,4 +30,28 @@ export default class Customizable extends Component {
     get parent() {
         return getElement(this._uid);
     }
+
+    customError(errorMessage) {
+        let i = setInterval(() => {
+            if (this.parent !== null) {
+                this.parent.innerHTML = `
+                    <div style="display: flex; flex-direction: column; 
+                        background: rgba(206, 17, 38, 0.05);
+                        padding: 10px;"
+                    >
+                            <a style="font-size: 9px; color: black;">
+                            float-box.js
+                            </a>
+                            <a style="color: black; font-size: 12px">
+                                ${errorMessage}
+                            </a>
+                    </div>
+                `;
+                this.parent.style.display = "unset";
+                this.parent.style.padding = "0";
+                this.parent.style.border = "1px dashed #d6d6d6;";
+                clearInterval(i);
+            }
+        }, 400)
+    }
 }

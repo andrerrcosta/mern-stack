@@ -5,8 +5,15 @@
     --colorD-logtrack: #545b63;
 }
 
-.logtrack-line {
+.logtrack-container {
     position: relative;
+}
+
+.logtrack-line {
+    height: 10px;
+    border-radius: 4px;
+    background-color: var(--colorB-logtrack, #ff4f4f);
+    opacity: .7;
 }
 
 .logtrack-dot {
