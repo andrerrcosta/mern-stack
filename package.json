@@ -19,8 +19,12 @@
         "express": "^4.17.1",
         "jsonwebtoken": "^8.5.1",
         "mongoose": "^5.11.13",
+        "node-schedule": "^2.0.0",
         "nodemon": "^2.0.7",
+        "rxjs": "^6.6.6",
+        "rxjs-websockets": "^8.0.1",
         "winston": "^3.3.3",
-        "winston-mongodb": "^5.0.5"
+        "winston-mongodb": "^5.0.5",
+        "ws": "^7.4.3"
     }
 }

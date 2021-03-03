@@ -1,0 +1,14 @@
+.nobble-icon-title-container {
+    display: flex;
+}
+
+.nobble-icon-title-container .header {
+    display: flex;
+    align-items: center;
+}
+
+.nobble-icon-title-container .title {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}

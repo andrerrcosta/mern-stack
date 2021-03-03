@@ -1,5 +1,5 @@
 import React from "react";
-import BImg from "../../common/components/b-img/b-img";
+import NobbleBImg from "../../nobble-common-demo/components/b-img/b-img";
 import CustomButton from "../../form-items/button/button";
 import CustomInput from "../../form-items/input/custom-input";
 import Auth from "../../services/auth";
@@ -73,7 +73,7 @@ export default class RegisterView extends React.Component {
                         Sign Up Page
                         </div>
                     <div className="register-header">
-                        <BImg source="assets/logos/001.jpg" width="130" height="130" radius="50%"></BImg>
+                        <NobbleBImg source="assets/logos/001.jpg" width="130" height="130" radius="50%"></NobbleBImg>
                     </div>
 
                     <CustomInput placeholder="Full Name" label="Full Name"

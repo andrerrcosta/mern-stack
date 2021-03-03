@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { NobbleWallet } from './common/services/nobble-wallet.module';
+import { NobbleWallet } from './nobble-common-demo/services/nobble-wallet.module';
 
 NobbleWallet.addWallet("authentication");
 

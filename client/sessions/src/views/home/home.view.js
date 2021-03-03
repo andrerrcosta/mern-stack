@@ -1,6 +1,6 @@
 import React from "react";
-import RunnableScreen from "../../common/components/runnable-screen/runnable-screen";
-import { NobbleWallet } from "../../common/services/nobble-wallet.module";
+import NobbleRunnableScreen from "../../nobble-common-demo/components/runnable-screen/runnable-screen";
+import { NobbleWallet } from "../../nobble-common-demo/services/nobble-wallet.module";
 import Auth from "../../services/auth";
 import LoginView from "../login/login.view";
 import RegisterView from "../register/register.view";
@@ -59,7 +59,7 @@ export default class HomeView extends React.Component {
 
             <div className="home-container background-login">
                 <div className="home-section">
-                    <RunnableScreen screens="2"
+                    <NobbleRunnableScreen screens="2"
                         height="100vh"
                         minWidth="280px"
                         display="flex"
@@ -68,7 +68,7 @@ export default class HomeView extends React.Component {
                         <LoginView action={this.loginAction} />
                         <RegisterView action={this.registerAction} />
 
-                    </RunnableScreen>
+                    </NobbleRunnableScreen>
                 </div>
             </div>
         )

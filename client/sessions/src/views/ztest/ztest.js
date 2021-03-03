@@ -1,12 +1,32 @@
 import React from "react";
-import { ActionDiv } from "../../common/components/action-div/action-div";
-import { FloatBox } from "../../common/components/float-box/float-box";
-import { getElement } from "../../common/utils/dom.functions";
+import NobbleLogChart from "../../nobble-common-demo/components/logchart/logchart";
 import "./ztest.css";
+import { webSocket } from "rxjs/webSocket";
 
 /**
- * Well, at least in the applications that i do for myself
- * i will not use reducer. I think reducer is useless.
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * O SEU PROBLEMA É O SEGUINTE. VOCÊ PRECISA COMPARTILHAR OS DADOS
+ * ATRAVÉS DO PROPS. REMOVA A CONSTRUÇÃO DOS LOGS DE DENTRO DO
+ * LOG-CHART. MONTE-OS AQUI PARA NÃO GASTAR MEMÓRIA E COMPARTILHE-OS.
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
  */
 
 export default class ZTest extends React.Component {
@@ -14,9 +34,39 @@ export default class ZTest extends React.Component {
     constructor() {
         super();
         this.state = {
-            show: false
+            show: false,
+            hostData: []
         };
     }
+
+    componentDidMount() {
+        const subject = webSocket({
+            url: "ws://localhost:5000",
+            deserializer: msg => JSON.parse(msg.data),
+        });
+
+        subject.next('log-test');
+
+        subject.subscribe(
+            data => {
+                // console.log('message received: ', data);
+                this.addHostData(data)
+            },
+            err => console.log(err),
+            () => console.log('complete')
+        );
+    }
+
+    addHostData(hostData) {
+        let newData = this.state.hostData;
+        newData.push(hostData);
+        this.setState({ hostData: newData });
+    }
+
+    getHostData() {
+
+    }
+
 
     floatBoxChange(action) {
         console.log("TEST::floatBoxChange");
@@ -25,27 +75,22 @@ export default class ZTest extends React.Component {
 
     manualChange(value) {
         console.log("SHOW", this.state.show);
-        this.setState({show: value})
+        this.setState({ show: value })
     }
 
     actionDivOutput(action) {
-        this.setState({show: action.trigger === "mouseover"});
+        this.setState({ show: action.trigger === "mouseover" });
     }
 
     render() {
         return (
             <div className="ztest-container">
-                Eu estou com raiva desse sharing states do react.
-                Eu vou inventar alguma coisa para isso, nem que eu tenha
-                que modificar o framework
-                <ActionDiv style={{width: "200px", height: "50px", background: "blue"}}
-                    actions={["mouseover", "mouseout"]} output={(o) => this.actionDivOutput(o)}>
 
-                </ActionDiv>
-                
-                <FloatBox show={this.state.show} action={(action) => this.floatBoxChange(action)}>
-                    Hello Box!
-                </FloatBox>
+                <NobbleLogChart data={this.state.hostData} 
+                    style={{ height: "450px" }} 
+                    live={true}
+                />
+
             </div>
         )
     }

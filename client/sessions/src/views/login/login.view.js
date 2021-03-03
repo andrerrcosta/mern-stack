@@ -1,5 +1,5 @@
 import React from "react";
-import BImg from "../../common/components/b-img/b-img";
+import BImg from "../../nobble-common-demo/components/b-img/b-img";
 import CustomButton from "../../form-items/button/button";
 import CustomInput from "../../form-items/input/custom-input";
 import "./login.view.css";
@@ -74,7 +74,6 @@ export default class LoginView extends React.Component {
                         {$.processing ?
                             <img src="assets/default000.gif" style={{ width: "25px", height: "25px" }} alt="" /> :
                             <span className="material-icons" style={{ fontSize: "18px" }}>login</span>
-
                         }
                     </CustomButton>
                 </section>

@@ -5,10 +5,34 @@ const port = process.env.SERVER_PORT || 5000;
 const DatabaseService = require("./database");
 const Database = new DatabaseService();
 const app = express();
+const server = require("http").createServer(app);
 const accessControl = require("./middlewares/access-control");
+const logCreatorService = require("./services/log-creator.service");
+const logCreator = logCreatorService();
 
 const authRoutes = require("./routes/auth");
 const adminRoutes = require("./routes/admin");
+const WebSocket = require("ws");
+
+const wss = new WebSocket.Server({ server: server });
+
+wss.on("connection", (ws) => {
+    ws.on("message", (message) => {
+        console.log(message)
+        logCreator.schedule("*/3 * * * * *", (log) => {
+            console.log("log", log);
+            let randomicInaccuracy = Math.round(Math.random() * 3);
+            if (randomicInaccuracy % 3 !== 0) {
+                ws.send(JSON.stringify(log));
+            }
+        })
+    })
+    // ws.on("close", () => {
+    //     console.log("closed connection");
+    //     logCreator.unsubscribe();
+    // })
+});
+
 
 /**
  * Mongoose
@@ -37,7 +61,7 @@ app.get("/", (req, res) => {
 });
 
 
-app.listen(port, () => {
+server.listen(port, () => {
     logger.info("Server connected on ", port, "Allowing Origin");
 });
 

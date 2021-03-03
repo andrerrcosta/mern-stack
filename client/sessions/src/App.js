@@ -2,7 +2,7 @@
 import React from "react";
 import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-dom";
 import './App.css';
-import { NobbleWallet } from "./common/services/nobble-wallet.module";
+import { NobbleWallet } from "./nobble-common-demo/services/nobble-wallet.module";
 import NotFoundView from "./views/404/404";
 import Dashboard from "./views/dashboard/dashboard.view";
 import HomeView from "./views/home/home.view";
@@ -13,7 +13,6 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = { auth: false, wallet: undefined };
-    // console.log("INSTANCE", NobbleWallet);
   }
 
   componentDidMount() {

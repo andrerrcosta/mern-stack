@@ -1,0 +1,114 @@
+:root {
+    --colorA-logtrack: #f5f5f5;
+    --colorB-logtrack: #6e6e6e;
+    --colorC-logtrack: #343a40;
+    --colorD-logtrack: #545b63;
+    --colorE-logtrack: #e5e5e5;
+    --colorF-logtrack: #a5a5a5;
+    --colorG-logtrack: #302055;
+    --colorH-logtrack: #30ff4b;
+    --colorI-logtrack: #dfff28;
+    --colorJ-logtrack: #ff3535;
+    --colorK-logtrack: #d30000;
+}
+
+.logtrack-container {
+    position: relative;
+    margin: 30px 0;
+    font-family: Poppins;
+}
+
+.logtrack-line {
+    height: 3px;
+    border-radius: 4px;
+    background-color: var(--colorB-logtrack, #6e6e6e);
+    opacity: .7;
+}
+
+.logtrack-dot-TRACE {
+    position: absolute;
+    background: var(--colorF-logtrack, #a5a5a5);
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+    transform: translateY(-6px);
+    border: 1px solid white;
+}
+
+.logtrack-dot-DEBUG {
+    position: absolute;
+    background: var(--colorG-logtrack, #302055);
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+    transform: translateY(-6px);
+    border: 1px solid white;
+}
+
+.logtrack-dot-INFO {
+    position: absolute;
+    background: var(--colorH-logtrack, #30ff4b);
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+    transform: translateY(-6px);
+    border: 1px solid white;
+}
+
+.logtrack-dot-WARN {
+    position: absolute;
+    background: var(--colorI-logtrack, #dfff28);
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+    transform: translateY(-6px);
+    border: 1px solid white;
+}
+
+.logtrack-dot-ERROR {
+    position: absolute;
+    background: var(--colorJ-logtrack, #ff3535);
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+    transform: translateY(-6px);
+    border: 1px solid white;
+}
+
+.logtrack-dot-FATAL {
+    position: absolute;
+    background: var(--colorK-logtrack, #d30000);
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+    transform: translateY(-6px);
+    border: 1px solid white;
+}
+
+.logtrack-dot-FATAL:after {
+    content: "\274c";
+    text-align: center;
+    font-size: 5px;
+}
+
+.logtrack-container .hostname {
+    font-size: 11px;
+    font-weight: 600;
+    position: -webkit-sticky;
+    position: sticky;
+    left: 0;
+    width: fit-content;
+    border: 1px solid var(--colorA-logtrack, #b7b7b7);
+    background: var(--colorE-logtrack, #e5e5e5);
+    border-radius: 3px;
+    margin: 0px 0 5px;
+    padding: 5px;
+}
+
+.logtrack-log-field {
+    font-size: 13px;
+}
+
+.logtrack-log-field b {
+    font-weight: 400;
+}

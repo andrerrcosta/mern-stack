@@ -9540,6 +9540,11 @@ run-queue@^1.0.0, run-queue@^1.0.3:
   dependencies:
     aproba "^1.1.1"
 
+rxjs-websockets@^8.0.1:
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/rxjs-websockets/-/rxjs-websockets-8.0.1.tgz#457498b6e72993c8d0953169759aae65e0d5aa29"
+  integrity sha512-j1U2uGxJxwxwKlDnRVWViFdpWgvESEWwS0+3/PKg8ygAqTLEB77hVxUqmqZcp45fcgtkrvl1/0i7qy9wEFO29g==
+
 rxjs@^6.6.3:
   version "6.6.3"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.6.3.tgz#8ca84635c4daa900c0d3967a6ee7ac60271ee552"
