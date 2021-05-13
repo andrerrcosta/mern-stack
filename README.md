@@ -5,6 +5,6 @@ This is a example of a Containerized Mern Stack (MongoDB, Express, React, Node) 
 
 If you wanna run you will just need a mongodb without password running on 27017
 
-# yarn install
-# yarn run server
-# yarn run client
+$ yarn install
+$ yarn run server
+$ yarn run client
