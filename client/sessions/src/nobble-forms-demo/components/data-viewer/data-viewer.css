@@ -1,0 +1,44 @@
+.nobble-data-viewer-demo-container {
+  padding: 10px;
+  color: #595d6e;
+}
+
+.nobble-data-viewer-demo-content {
+  display: flex;
+  flex-flow: wrap;
+}
+
+.nobble-data-viewer-demo-header {
+  margin: 10px 0;
+  font-size: 30px;
+  display: flex;
+  justify-content: space-between;
+  flex-flow: wrap;
+  padding: 0 5px;
+}
+
+.nobble-data-viewer-demo-header .material-icons {
+  width: 32px;
+  height: 32px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #595d6e;
+}
+
+.nobble-data-viewer-demo-header-left {
+  display: flex;
+  justify-content: flex-start;
+  flex-grow: 1;
+  margin-right: 10px;
+  font-family: 'Roboto';
+  align-items: center;
+  font-size: 24px;
+  font-weight: 100;
+}
+
+.nobble-data-viewer-demo-header-right {
+  display: flex;
+  align-items: center;
+}

@@ -1,0 +1,130 @@
+:root {
+  --colorA-paginator: #e5e5e5;
+  --colorB-paginator: #ffffff;
+  --colorC-paginator: #2a2a2b;
+  --colorD-paginator: #cbd3de;
+}
+
+.nobble-paginator-demo-container {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: wrap;
+  padding: 10px;
+  background: var(--colorB-paginator, #ffffff);
+  border: 1px solid var(--colorA-paginator, #f5f5f5);
+  font-size: 13px;
+  border-radius: 3px;
+  font-family: "Roboto";
+}
+
+.nobble-paginator-demo-left {
+  display: flex;
+  justify-content: flex-start;
+  flex-grow: 1;
+  align-items: center;
+}
+
+.nobble-paginator-demo-right {
+  display: flex;
+  height: 29.25px;
+  align-items: center;
+}
+
+.nobble-paginator-demo-button {
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 29.25px;
+  height: 29.25px;
+  text-decoration: none;
+  outline: none;
+  margin: 2px;
+  transition: 0.4s ease-in-out;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.nobble-paginator-demo-button:hover {
+  background: var(--colorC-paginator, #2a2a2b);
+  color: var(--colorB-paginator, #ffffff);
+  opacity: 1;
+}
+
+.nobble-paginator-demo-button-disabled {
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 29.25px;
+  height: 29.25px;
+  text-decoration: none;
+  outline: none;
+  margin: 2px;
+  transition: 0.4s ease-in-out;
+  cursor: pointer;
+  opacity: 0.3;
+  pointer-events: none;
+  
+}
+
+.nobble-paginator-demo-button-active {
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 29.25px;
+  height: 29.25px;
+  text-decoration: none;
+  outline: none;
+  margin: 2px;
+  transition: 0.4s ease-in-out;
+  cursor: pointer;
+  background: var(--colorC-paginator, #2a2a2b);
+  color: var(--colorB-paginator, #ffffff)
+}
+
+.nobble-paginator-demo-button2 {
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 29.25px;
+  height: 29.25px;
+  text-decoration: none;
+  outline: none;
+  margin: 2px;
+  transition: 0.4s ease-in-out;
+  cursor: pointer;
+  opacity: .8;
+  background: var(--colorC-paginator, #2a2a2b);
+  color: var(--colorB-paginator, #ffffff)
+}
+
+.nobble-paginator-demo-button2:hover {
+  opacity: 1;
+}
+
+.nobble-paginator-demo-button2-disabled {
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 29.25px;
+  height: 29.25px;
+  text-decoration: none;
+  outline: none;
+  margin: 2px;
+  transition: 0.4s ease-in-out;
+  cursor: pointer;
+  opacity: .3;
+  background: var(--colorC-paginator, #2a2a2b);
+  color: var(--colorB-paginator, #ffffff);
+  cursor: default;
+}
+
+.nobble-paginator-demo-arrow {
+  font-family: 'Recursive', sans-serif;
+  font-size: 20px;
+  padding-bottom: 2px;
+}

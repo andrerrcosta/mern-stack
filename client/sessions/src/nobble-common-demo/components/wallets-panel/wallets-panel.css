@@ -1,0 +1,154 @@
+:root {
+  --wallets-panel-colorA: #f5f5f5;
+  --wallets-panel-colorB: #ffffff;
+  --wallets-panel-colorC: #212529;
+  --wallets-panel-colorD: #27b139;
+  --wallets-panel-colorE: rgb(255, 88, 88);
+  --wallets-panel-colorF: #03a9f4;
+  --wallets-panel-colorG: #212529;
+  --wallets-panel-colorH: #f8f8f8;
+}
+
+.nobble-wallets-panel-demo-container {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  height: 100%;
+  overflow: hidden;
+  font-family: "Roboto";
+}
+
+.nobble-wallets-panel-demo-header {
+  padding: 5px;
+  font-family: "Poppins";
+  font-size: 12px;
+  color: var(--wallets-panel-colorC, #212529);
+  text-transform: uppercase;
+}
+
+.nobble-wallets-panel-demo-header b {
+  margin-left: 5px;
+  font-weight: 500;
+}
+
+.nobble-wallets-panel-demo-return-button {
+  border-radius: 3px;
+  padding: 7px 13px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.nobble-wallets-panel-demo-return-button:hover {
+  background: var(--wallets-panel-colorH, #f8f8f8);
+}
+
+.nobble-wallets-panel-demo-content {
+  display: flex;
+  flex-flow: wrap;
+  overflow: hidden auto;
+}
+
+.nobble-wallets-panel-demo-wallet {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2px;
+  flex-basis: calc(25% - 4px);
+  height: 95px;
+  border-radius: 3px;
+  padding: 10px;
+  font-size: 13px;
+  background: var(--wallets-panel-colorH, #f8f8f8);
+}
+
+.nobble-wallets-panel-demo-wallet:hover {
+  opacity: 1;
+  cursor: default;
+  background: var(--wallets-panel-colorA, #f5f5f5);
+}
+
+.nobble-wallets-panel-demo-wallet-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nobble-wallets-panel-demo-wallet-details {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin-left: 10px;
+}
+
+.nobble-wallets-panel-demo-wallet-details-item {
+  display: flex;
+}
+
+.nobble-wallets-panel-demo-wallet-details-param {
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  font-weight: 900;
+}
+
+.nobble-wallets-panel-demo-wallet .material-icons {
+  font-size: 35px;
+}
+
+.nobble-wallets-panel-demo-wallet .material-icons-outlined {
+  font-size: 35px;
+}
+
+.nobble-wallets-panel-demo-icon-consumed-filled-complete {
+  color: var(--wallets-panel-colorD, #27b139);
+}
+
+.nobble-wallets-panel-demo-icon-consumed-filled-loading {
+  color: var(--wallets-panel-colorF, #03a9f4);
+}
+
+.nobble-wallets-panel-demo-icon-consumed-filled-error {
+  color: var(--wallets-panel-colorE, rgb(255, 88, 88));
+}
+
+.nobble-wallets-panel-demo-icon-notconsumed-filled-complete {
+  color: var(--wallets-panel-colorD, #759bb4);
+}
+
+.nobble-wallets-panel-demo-icon-notconsumed-filled-loading {
+  color: var(--wallets-panel-colorF, #03a9f4);
+}
+
+.nobble-wallets-panel-demo-icon-notconsumed-filled-error {
+  color: var(--wallets-panel-colorE, rgb(255, 88, 88));
+}
+
+.nobble-wallets-panel-demo-icon-consumed-empty-complete {
+  color: var(--wallets-panel-colorD, #27b139);
+}
+
+.nobble-wallets-panel-demo-icon-consumed-empty-loading {
+  color: var(--wallets-panel-colorF, #03a9f4);
+}
+
+.nobble-wallets-panel-demo-icon-consumed-empty-error {
+  color: var(--wallets-panel-colorE, rgb(255, 88, 88));
+}
+
+.nobble-wallets-panel-demo-icon-notconsumed-empty-complete {
+  color: var(--wallets-panel-colorD, #27b139);
+}
+
+.nobble-wallets-panel-demo-icon-notconsumed-empty-loading {
+  color: var(--wallets-panel-colorF, #03a9f4);
+}
+
+.nobble-wallets-panel-demo-icon-notconsumed-empty-error {
+  color: var(--wallets-panel-colorE, rgb(255, 88, 88));
+}
+
+.nobble-wallets-panel-demo-info {
+  width: 100%;
+  padding: 10px 0;
+  background: var(--wallets-panel-colorG, #81d4fa);
+}

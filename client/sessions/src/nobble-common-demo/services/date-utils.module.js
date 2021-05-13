@@ -7,6 +7,12 @@ export class DateUtils {
         Assert.typeOfDate(date);
         return date.getTime();
     }
+
+    static getDaysBetween(dateA, dateB, abs) {
+        Assert.typeOfDate(dateA, dateB);
+        let days = (dateA.getTime() - dateB.getTime()) / (1000 * 3600 * 24);
+        return abs ? Math.abs(days) : days;
+    }
 }
 
 export class Timestamp {

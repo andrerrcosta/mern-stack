@@ -1,110 +1,73 @@
-import React from "react";
+import React, { useState } from "react";
 import NobbleBImg from "../../nobble-common-demo/components/b-img/b-img";
-import CustomButton from "../../form-items/button/button";
-import CustomInput from "../../form-items/input/custom-input";
-import Auth from "../../services/auth";
+import { NobbleFormGroupDemo } from "../../nobble-forms-demo/components/form-group/form-group";
+import { NobbleInput } from "../../nobble-forms-demo/components/input/input";
+import NobbleSubmitButton from "../../nobble-forms-demo/components/submit/submit";
+import createFormGroup from "../../nobble-forms-demo/models/forms/form-group.model";
+import { FormItem } from "../../nobble-forms-demo/models/forms/form-item.model";
+import createValidators from "../../nobble-forms-demo/models/forms/validators.model";
 import "./register.view.css";
 
-export default class RegisterView extends React.Component {
+const RegisterView = (props) => {
 
-    constructor() {
-        super();
-        this.state = {
-            requesting: false,
-            name: "",
-            email: "",
-            password: "",
-            cpassword: ""
+    const [processing, setProcessing] = useState(false);
+
+    const formGroup = createFormGroup(
+        new FormItem("name", "", createValidators().required().min(5).max(20).string()),
+        new FormItem("email", "", createValidators().required().max(40).string().email()),
+        new FormItem("password", "", createValidators().required().min(6).max(30).string()),
+        new FormItem("passwordConfirmation", "", createValidators().required().min(6).max(30).string())
+    )
+
+    const register = (form) => {
+        if (form.isValid) {
+            props.action({ action: "register", value: formGroup.toModel() });
         }
     }
 
-    // componentWillUnmount() {
-    //     console.warn("REGISTER::unmount");
-    // }
+    return (
+        <div className="register-content">
 
-    login = () => {
-        const f = this.state;
-        Auth.register({ name: f.name, email: f.email, password: f.password })
-            .subscribe(
-                res => {
-                    console.log(res)
-                },
-                error => {
-                    console.error("Registration Error", error)
-                }
-            );
-    }
+            <NobbleFormGroupDemo formGroup={formGroup} action={(form) => register(form)}>
+                <div className="register-header" style={{ fontSize: "20px", fontWeight: "700", color: '#32597d' }}>
+                    Sign Up Page
+                </div>
+                <div className="register-header">
+                    <NobbleBImg source="assets/logos/001.jpg" width="130" height="130" radius="50%"></NobbleBImg>
+                </div>
 
-    fetchForm = (value, formName) => {
-        console.log("FETCH-FORM", formName);
-        switch (formName) {
-            case "username":
-                this.setState({ name: value })
-                break;
+                <NobbleInput placeholder="Full Name" label="Full Name"
+                    action={(e) => formGroup.set("name", e.value)}
+                />
 
-            case "email":
-                this.setState({ email: value })
-                break;
-
-            case "password":
-                this.setState({ password: value });
-                break;
-
-            case "confirmation-password":
-                this.setState({ cpassword: value });
-                break;
-
-            default: break;
-        }
-    }
-
-    changeScreen = (screen) => {
-        console.log("Changing to screen", screen);
-        this.props.action({ action: "change-screen", value: screen });
-    }
-
-    render() {
-        const $ = this.state;
-        return (
-            <div className="register-content">
-
-                <section>
-                    <div className="register-header" style={{ fontSize: "20px", fontWeight: "700", color: '#32597d' }}>
-                        Sign Up Page
-                        </div>
-                    <div className="register-header">
-                        <NobbleBImg source="assets/logos/001.jpg" width="130" height="130" radius="50%"></NobbleBImg>
-                    </div>
-
-                    <CustomInput placeholder="Full Name" label="Full Name"
-                        getValue={(e) => this.fetchForm(e, "username")}
-                    />
-
-                    <CustomInput placeholder="youremail@email.com" label="Email"
-                        getValue={(e) => this.fetchForm(e, "email")}
-                    />
-                    <CustomInput placeholder="password"
-                        label="Password"
-                        type="password"
-                        getValue={(e) => this.fetchForm(e, "password")}
-                    />
-                    <CustomInput placeholder="password"
-                        label="Confirm Your Password"
-                        type="password"
-                        getValue={(e) => this.fetchForm(e, "confimation-password")}
-                    />
-                    <CustomButton label="Sign-Up" background="#24385b" color="white" onClick={this.login}>
+                <NobbleInput placeholder="youremail@email.com" label="Email"
+                    action={(e) => formGroup.set("email", e.value)}
+                />
+                <NobbleInput password placeholder="password"
+                    label="Password"
+                    action={(e) => formGroup.set("password", e.value)}
+                />
+                <NobbleInput password placeholder="password"
+                    label="Confirm Your Password"
+                    action={(e) => formGroup.set("passwordConfirmation", e.value)}
+                />
+                <NobbleSubmitButton label="Sign-Up" colorScheme={["#212529", "#212529", "#ffffff"]} style={{ marginTop: "10px" }}>
+                    {processing ?
+                        <img src="assets/default000.gif" style={{ width: "25px", height: "25px" }} alt="" /> :
                         <span className="material-icons" style={{ fontSize: "18px" }}>login</span>
-                    </CustomButton>
-                </section>
+                    }
+                </NobbleSubmitButton>
+            </NobbleFormGroupDemo>
 
-                <section>
-                    <div style={{ whiteSpace: "wrap" }}>{$.name} - {$.email} - {$.password}</div>
-                    <div className="register-options">
-                        <div className="link" onClick={() => this.changeScreen(0)}>Already Registered? Sign In</div>
+            <section>
+                <div className="register-options">
+                    <div className="link" onClick={() => props.action({ action: "change-screen", value: 0 })}>
+                        Already Registered? Sign In
                     </div>
-                </section>
-            </div>
-        );
-    }
+                </div>
+            </section>
+        </div>
+    );
 }
+
+export default RegisterView;

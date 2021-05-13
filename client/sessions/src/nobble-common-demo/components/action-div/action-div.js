@@ -25,16 +25,15 @@ export default class NobbleActionDiv extends Customizable {
                 });
             });
         }
-    }
-
-    componentWillUnmount() {
-        if (isValid(this.props.actions)) {
-            this.props.actions.forEach(action => {
-                this.parent.removeEventListener(action, () => {
-                    this.props.output({ trigger: action, element: this.parent });
+        this._destroyer.subscribe(destroy => {
+            if (destroy && isValid(this.props.actions)) {
+                this.props.actions.forEach(action => {
+                    this.parent.removeEventListener(action, () => {
+                        this.props.output({ trigger: action, element: this.parent });
+                    });
                 });
-            });
-        }
+            }
+        })
     }
 
     render() {

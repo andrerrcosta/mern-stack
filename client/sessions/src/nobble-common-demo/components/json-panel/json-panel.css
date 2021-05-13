@@ -1,0 +1,32 @@
+:root {
+  --json-panel-colorA: #f8f8f8;
+  --json-panel-colorB: #ffffff;
+  --json-panel-colorC: #595d6e;
+}
+
+.nobble-json-panel-demo-container {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  font-family: "Poppins";
+}
+
+.nobble-json-panel-demo-header {
+  display: flex;
+  margin: 5px 0;
+  font-size: 12px;
+  font-family: "Poppins";
+  text-transform: uppercase;
+  color: var(--json-panel-colorC);
+  font-weight: 500;
+}
+
+.nobble-json-panel-demo-pre {
+  background: var(--json-panel-colorB);
+  color: var(--json-panel-colorC);
+  border: 1px solid var(--json-panel-colorA, #f8f8f8);
+  word-break: break-all;
+  white-space: pre-wrap;
+  border-radius: 3px;
+  margin: 0;
+}

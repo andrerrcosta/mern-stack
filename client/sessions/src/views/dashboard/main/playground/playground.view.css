@@ -1,0 +1,92 @@
+.dashboard-main-data-panel {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #f9f9fc;
+}
+
+.dashboard-main-data-panel-empty {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #f9f9fc;
+  color: #595d6e;
+}
+
+.dashboard-main-data-panel-error {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #f9f9fc;
+}
+
+.dashboard-main-data-panel-error-status {
+  font-size: 35px;
+  color: #212529;
+  margin-bottom: 15px;
+}
+
+.dashboard-main-data-panel-error-message {
+  font-size: 25px;
+  color: #212529;
+  margin-top: 15px;
+}
+
+
+
+.dashboard-main-data-panel-principal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  height: 100%;
+}
+
+.dashboard-main-data-panel-principal-tools {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.dashboard-main-data-panel-principal-tools-item {
+  padding: 5px 0;
+  display: flex;
+  justify-content: center;
+  flex-flow: wrap;
+}
+
+.dashboard-main-data-panel-principal-tools-description {
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  color: #f5f5f5;
+  font-size: 13px;
+}
+
+.dashboard-main-data-panel-principal-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  padding: 15px;
+}
+
+.dashboard-main-data-panel-principal-content a {
+  font-size: 12px;
+  color: #909090;
+}
+
+.dashboard-main-data-panel-principal-content a:hover {
+  font-size: 12px;
+  color: #212529;
+  text-decoration: underline;
+}
+
+

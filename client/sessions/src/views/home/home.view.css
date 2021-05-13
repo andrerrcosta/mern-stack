@@ -1,14 +1,92 @@
+@media screen and (max-width: 10000px) {
+  .home-container-screen {
+    padding: 0 200px;
+  }
+}
+
+@media screen and (max-width: 980px) {
+  .home-container-screen {
+    padding: 0 100px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .home-container-screen {
+    padding: 0 20px;
+  }
+}
+
 .home-container {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    padding-right: 200px;
-    font-family: poppins;
-  }
-  
-  .home-section {
-    display: flex;
-    flex-direction: column;
-    min-width: 280px;
-    margin: auto 0px auto auto;
-  }
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-flow: wrap-reverse;
+  font-family: poppins;
+}
+
+.home-section {
+  display: flex;
+  flex-direction: column;
+  /* background: red; */
+  margin: auto;
+}
+
+.home-dev-tools {
+  padding: 10px;
+  display: flex;
+  margin-right: 10px;
+}
+
+.home-dev-tools-menu {
+  background: #e5e5e5;
+  color: #595d6e;
+  border-radius: 5px;
+}
+
+.home-section-left {
+  /* background: blue; */
+  flex-grow: 1;
+  display: flex;
+}
+
+.dev-panel-error {
+  width: 100%;
+  padding: 10px;
+}
+
+.dev-panel-default {
+  width: 100%;
+  padding: 10px;
+}
+
+.dev-panel-data {
+  width: 100%;
+  padding: 10px;
+  /* height: 576px; */
+  font-size: 13px;
+}
+
+.dev-panel-row {
+  display: flex;
+}
+
+.dev-panel-row b {
+  margin-right: 5px;
+}
+
+.dev-panel-playground {
+  border-radius: 5px;
+  border: 1px solid #f5f5f5;
+  padding: 10px;
+  margin: 5px 0;
+  background: #f5f5f5;
+  cursor: pointer;
+}
+
+.dev-panel-playground:hover {
+  border-radius: 5px;
+  border: 1px solid #f5f5f5;
+  padding: 10px;
+  margin: 5px 0;
+  background: #ffffff;
+}

@@ -1,0 +1,57 @@
+:root {
+    --colorA-submit: transparent;
+    --colorB-submit: #03a9f4;
+    --colorC-submit: #FFFFFF;
+    --colorD-submit: #E5E5E5;
+    --width-submit: 100%;
+}
+
+.nobble-submit-container {
+    cursor: pointer;
+    position: relative;
+}
+
+.nobble-submit-container-disabled {
+    position: relative;
+    opacity: .25;
+    pointer-events: none;
+    cursor: default;
+}
+
+.nobble-submit-input input{
+    width: var(--width-submit, 100%);
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    z-index: 2;
+}
+
+.nobble-submit-input:hover ~ .nobble-submit-button {
+    opacity: 1;
+}
+
+.nobble-submit-button {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--colorA-submit, transparent);
+    background: var(--colorB-submit, #03a9f4);
+    color: var(--colorC-submit, #FFFFFF);
+    border-radius: 3px;
+    padding: 8px 14px;
+    width: var(--width-submit, 100%);
+    opacity: .85;
+}
+
+.nobble-submit-icon {
+    margin-right: 7px;
+    align-items: center;
+    justify-content: flex-end;
+    display: flex;
+    flex-grow: 1;
+}
+
+.nobble-submit-label {
+    flex-grow: 1;
+    font-size: 13px;
+}

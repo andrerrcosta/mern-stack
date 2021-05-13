@@ -1,0 +1,96 @@
+:root {
+  --colorA-select: #f5f5f5;
+  --colorB-select: #ffffff;
+  --colorC-select: #595d6e;
+  --colorD-select: #cbd3de;
+  --colorE-select: #212529;
+  --colorF-select: #ffffff;
+  --height-select: 30px;
+}
+
+.nobble-select-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: var(--height-select, 30px);
+  font-family: poppins;
+  font-size: 13px;
+  border: 1px solid var(--colorA-select, #f5f5f5);
+  color: var(--colorD-select, #595d6e);
+  border-radius: 3px;
+  margin: 3px;
+}
+
+.nobble-select-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+  cursor: default;
+  width: 100%;
+  height: 100%;
+  background: var(--colorB-select, #ffffff);
+  color: var(--colorC-select, #595d6e);
+  border-radius: 3px;
+}
+
+.nobble-select-placeholder:hover {
+  transition: all 0.3s ease;
+  box-shadow: 0 0 0pt 2pt var(--colorA-select, #f5f5f5);
+}
+
+.nobble-select-placeholder-open {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+  cursor: default;
+  width: 100%;
+  height: 100%;
+  color: var(--colorF-select, #ffffff);
+  background: var(--colorE-select, #212529);
+  border-radius: 3px;
+}
+
+.nobble-select-placeholder-text {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.nobble-select-placeholder-icon {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.nobble-select-placeholder-icon span {
+  font-size: 20px;
+}
+
+.nobble-select-options {
+  cursor: default;
+  position: absolute;
+  top: var(--height-select, 32px);
+  z-index: 999999999;
+  background: var(--colorB-select, #ffffff);
+  border: 1px solid var(--colorA-select, #f5f5f5);
+  border-radius: 3px;
+  width: 100%;
+  box-shadow: rgb(67 117 151 / 8%) 3px 2px 7px 0px;
+  overflow: hidden auto;
+  max-height: 400px;
+}
+
+.nobble-select-option {
+  padding: 7px;
+  color: var(--colorC-select, #595d6e);
+}
+
+.nobble-select-option:hover {
+  color: var(--colorF-select, #ffffff);
+  background: var(--colorE-select, #212529);
+}

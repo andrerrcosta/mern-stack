@@ -1,0 +1,66 @@
+.dashboard-main-view-menu {
+  width: 100%;
+  background: #ffffff;
+  color: #595d6e;
+  height: 100%;
+  font-family: poppins;
+  border-right: 1px solid #f5f5f5;
+}
+
+.dashboard-main-view-menu .left-menu-item {
+  padding: 5px;
+}
+
+.dashboard-main-view-menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-main-view-menu .left-menu-title {
+  font-weight: 600;
+  font-size: 13px;
+  color: #212529;
+  padding: 5px;
+  white-space: nowrap;
+}
+
+.dashboard-main-view-menu .left-menu-link {
+  font-weight: 200;
+  font-size: 13px;
+  color: #212529;
+  padding: 5px;
+  white-space: nowrap;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.dashboard-main-view-left-menu-link:hover {
+  background: #f5f5f5;
+}
+
+.dashboard-main-view-left-menu-icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  color: var(--colorE-tab-panel, #212529);
+  opacity: 0.95;
+  border-right: 1px solid var(--colorA-tab-panel, #f5f5f5);
+}
+
+.dashboard-main-view-left-menu-icon-box:hover {
+  color: var(--colorA-tab-panel, #f5f5f5);
+  background: var(--colorE-tab-panel, #212529);
+}
+
+.dashboard-main-view-form-item-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  font-size: 20px;
+  opacity: 0.95;
+}

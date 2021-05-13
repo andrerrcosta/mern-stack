@@ -1,0 +1,26 @@
+.nobble-marker-group-container {
+    width: 100%;
+    display: flex;
+    flex-flow: wrap;
+}
+
+.nobble-marker-group-marker {
+    display: flex;
+    justify-content: space-between;
+    flex-flow: nowrap;
+    padding: 4px;
+    margin: 2px;
+}
+
+
+.nobble-marker-group-marker .name {
+    display: flex;
+    align-items: center;
+}
+
+.nobble-marker-group-marker .close {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 50%;
+}

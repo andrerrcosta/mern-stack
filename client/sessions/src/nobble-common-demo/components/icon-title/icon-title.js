@@ -1,14 +1,21 @@
-import "./icon-title.css"
+import "./icon-title.css";
 
 const NobbleIconTitle = (props) => {
+    
+
 
     return (
-        <div className="nobble-icon-title-container">
-            <div className="header">
+        <div className="nobble-icon-title-container" style={props.style}>
+            <div className="nobble-icon-title-icon">
                 {props.children}
             </div>
-            <div className="title" style={props.titleStyle}>
-                {props.title}
+            <div className="nobble-icon-title-content">
+                <div className="title" style={props.titleStyle}>
+                    {props.title}
+                </div>
+                <div className="description" style={props.descriptionStyle}>
+                    {props.description}
+                </div>
             </div>
         </div>
     )

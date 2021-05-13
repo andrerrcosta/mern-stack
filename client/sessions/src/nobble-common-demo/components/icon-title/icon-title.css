@@ -1,14 +1,24 @@
 .nobble-icon-title-container {
-    display: flex;
+  display: flex;
+  font-family: poppins;
 }
 
-.nobble-icon-title-container .header {
-    display: flex;
-    align-items: center;
+.nobble-icon-title-icon {
+  display: flex;
+  align-items: center;
 }
 
-.nobble-icon-title-container .title {
-    display: flex;
-    align-items: center;
-    margin-left: 10px;
+.nobble-icon-title-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 10px;
+}
+
+.nobble-icon-title-content .title {
+  font-size: 14px;
+}
+
+.nobble-icon-title-content .description {
+  font-size: 11px;
 }

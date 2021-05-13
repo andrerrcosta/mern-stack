@@ -11,6 +11,7 @@ export default class CustomInput extends React.Component {
     }
 
     handle = (e) => {
+        console.log("Handle", e.target.value);
         this.setState({ value: e.target.value });
         this.props.getValue(e.target.value);
     }

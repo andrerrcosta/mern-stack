@@ -4,10 +4,6 @@ import "./b-img.css";
 
 export default class NobbleBImg extends React.Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         const p = this.props;
         return (

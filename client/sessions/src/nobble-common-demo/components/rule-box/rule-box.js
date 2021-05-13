@@ -3,10 +3,10 @@ import Customizable from "../../interfaces/customizable";
 import { Undefined } from "../../utils/optional";
 import "./rule-box.css";
 
-export class NobbleRuleBox extends Customizable {
+export class NobbleRuleBoxDemo extends Customizable {
 
     constructor(props) {
-        super(props, "rule-box");
+        super(props, "rule-box-demo");
     }
 
     render() {

@@ -1,0 +1,51 @@
+:root {
+  --colorA-button: transparent;
+  --colorB-button: #03a9f4;
+  --colorC-button: #ffffff;
+  --colorD-button: #cbd3de;
+}
+
+.nobble-button-container {
+  display: flex;
+  border-radius: 5px;
+  opacity: 0.75;
+  cursor: pointer;
+  padding: 8px 14px;
+  justify-content: center;
+  align-items: center;
+  font-family: Poppins;
+  font-size: 14px;
+  background: var(--colorB-button, #03a9f4);
+  border: 1px solid var(--colorA-button, transparent);
+  color: var(--colorC-button, #ffffff);
+}
+
+.nobble-button-container:hover {
+  opacity: 1;
+}
+
+.nobble-button-container-disabled {
+  display: flex;
+  border-radius: 5px;
+  opacity: 0.75;
+  cursor: default;
+  transition: all 0.4s ease;
+  padding: 8px 14px;
+  justify-content: center;
+  align-items: center;
+  font-family: Poppins;
+  font-size: 14px;
+  background: var(--colorB-button, #03a9f4);
+  border: 1px solid var(--colorA-button, transparent);
+  color: var(--colorC-button, #ffffff);
+  opacity: 0.25;
+}
+
+.nobble-button-container .children {
+  display: flex;
+  margin: 0 5px 0 0;
+}
+
+.nobble-button-container .label {
+  display: flex;
+}

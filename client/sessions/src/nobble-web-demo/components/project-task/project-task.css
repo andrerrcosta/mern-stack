@@ -1,0 +1,45 @@
+:root {
+  --colorA-project-task: #f5f5f5;
+  --colorB-project-task: #ffffff;
+  --colorC-project-task: #595d6e;
+  --colorD-project-task: #cbd3de;
+  --colorE-project-task: #212529;
+  --colorF-project-task: transparent;
+}
+
+.nobble-project-task-demo-container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--colorA-project-task, #f5f5f5);
+  color: var(--colorC-project-task, #595d6e);
+  background: var(--colorF-project-task, transparent);
+  border-radius: 3px;
+  overflow: hidden;
+  flex-basis: 40%;
+  flex-grow: 1;
+}
+
+.nobble-project-task-demo-container .header {
+  background: var(--colorB-project-task, #ffffff);
+  padding: 10px;
+}
+
+.nobble-project-task-demo-container .tools {
+  background: var(--colorB-project-task, #ffffff);
+  border-top: 1px solid var(--colorA-project-task, #f5f5f5);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nobble-project-task-demo-container .tools:hover {
+  background: var(--colorD-project-task, #cbd3de);
+}
+
+.nobble-project-task-demo-container .details {
+  background: var(--colorE-project-task, #ffffff);
+  border-left: 1px solid var(--colorA-project-task, #f5f5f5);
+  border-right: 1px solid var(--colorA-project-task, #f5f5f5);
+  margin: 0 10px;
+}

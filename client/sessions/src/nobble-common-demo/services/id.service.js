@@ -39,7 +39,9 @@ function getIdMap() {
                     console.error(`Stack '${stackName}' was not found. Nothing was removed!`)
                 }
             } else {
-                console.error("You must provid a valid stack name and id to remove then");
+                let errorObject = {"component": stackName, "id": id, "message": "You must provid a valid stack name and id to remove then"};
+                let warn = "\nError Trying remove component id\nThis is a memory leak!\n";
+                console.error(warn, errorObject);
             }
         }
     }

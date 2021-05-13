@@ -15,7 +15,26 @@ export default class NobbleDropdown extends Customizable {
     }
 
     componentDidMount() {
-        this.parent.style.cssText = Stylist
+        this.setDefaults();
+    }
+
+    componentDidUpdate() {
+        if (this.state.show) {
+            document.addEventListener("click", this.clickOutside, true);
+        } else {
+            document.removeEventListener("click", this.clickOutside, true);
+        }
+    }
+
+    clickOutside = (e) => {
+        if (this.parent.contains(e.target)) return;
+        this.element("dropdown").style.display = "none";
+        this.setState({ show: false });
+    }
+
+    setDefaults() {
+
+        this.parent.style.cssText += Stylist
             .addProperty("--colorA-dropdown", this.state.colorScheme.getColor(0))
             .addProperty("--colorB-dropdown", this.state.colorScheme.getColor(1))
             .addProperty("--colorC-dropdown", this.state.colorScheme.getColor(2))
@@ -26,6 +45,7 @@ export default class NobbleDropdown extends Customizable {
     toggleDropdown() {
         let dropdown = this.element("dropdown");
         let display = dropdown.style.display;
+        this.setState({ show: !this.state.show });
         dropdown.style.display = display === "none" ? "unset" : "none";
     }
 
@@ -36,8 +56,8 @@ export default class NobbleDropdown extends Customizable {
                 <div className={this.addClass("button")} onClick={() => this.toggleDropdown()}>
                     {p.children[0]}
                 </div>
-                <div className={this.addClass(`dropdown-${Undefined(p.bound, "left")}`)} 
-                style={{ display: "none" }} id={this.addId("dropdown")}>
+                <div className={this.addClass(`dropdown-${Undefined(p.bound, "left")}`)} id={this.addId("dropdown")}
+                    style={{ display: "none", left: p.left, top: p.top, right: p.right, bottom: p.bottom }}>
                     {p.children[1]}
                 </div>
             </div>

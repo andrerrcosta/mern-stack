@@ -1,0 +1,99 @@
+:root {
+  --colorA-autocomplete: #f5f5f5;
+  --colorB-autocomplete: #ffffff;
+  --colorC-autocomplete: #595d6e;
+  --colorD-autocomplete: #cbd3de;
+  --colorE-autocomplete: #212529;
+  --colorF-autocomplete: #cbd3de;
+  --height-autocomplete: 32px;
+  --top-autocomplete: 32px;
+  --padding-autocomplete: 8px;
+}
+
+.nobble-autocomplete-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  font-family: poppins;
+}
+
+.nobble-autocomplete-container-disabled {
+  opacity: .7;
+  pointer-events: none;
+  cursor: default;
+  position: relative;
+}
+
+.nobble-autocomplete-label {
+  font-size: 13px;
+  margin: 0 3px;
+}
+
+.nobble-autocomplete-input {
+  border: 1px solid var(--colorA-autocomplete, #f5f5f5);
+  height: var(--height-autocomplete, 32px);
+  padding: 0 var(--padding-autocomplete, 8px);
+  color: var(--colorC-autocomplete, #595d6e);
+  border-radius: 3px;
+  outline: none;
+}
+
+.nobble-autocomplete-input:hover {
+  transition: all 0.3s ease;
+  box-shadow: 0 0 0pt 2pt var(--colorA-autocomplete, #f5f5f5);
+}
+
+.nobble-autocomplete-input:focus {
+  transition: all 0.3s ease;
+  box-shadow: 0 0 0pt 2pt var(--colorA-autocomplete, #f5f5f5);
+}
+
+.nobble-autocomplete-icon {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.nobble-autocomplete-addon {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.nobble-autocomplete-addon img {
+  width: 20px;
+  height: 20px;
+  margin: 0 5px;
+}
+
+.nobble-autocomplete-autocomplete {
+  position: absolute;
+  top: var(--top-autocomplete, 32px);
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: 1px solid var(--colorA-autocomplete, #f5f5f5);
+  background: var(--colorB-autocomplete, #ffffff);
+  max-height: 220px;
+  color: var(--colorC-autocomplete, #595d6e);
+  border-radius: 3px;
+  overflow: hidden auto;
+  z-index: 9999;
+  box-shadow: 0 0 0pt 2pt var(--colorA-autocomplete, #f5f5f5);
+}
+
+.nobble-autocomplete-autocomplete-item {
+  padding: 8px var(--padding-autocomplete, 8px);
+  background: transparent;
+  color: var(--colorC-autocomplete, #595d6e);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.nobble-autocomplete-autocomplete-item:hover {
+  color: var(--colorB-autocomplete, #ffffff);
+  background-color: var(--colorE-autocomplete, #212529);
+}

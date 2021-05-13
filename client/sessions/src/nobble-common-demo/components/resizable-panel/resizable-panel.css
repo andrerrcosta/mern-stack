@@ -1,0 +1,5 @@
+.nobble-resizable-panel-demo-container-fluid {
+    display: flex;
+    flex-flow: wrap;
+    width: 100%;
+}

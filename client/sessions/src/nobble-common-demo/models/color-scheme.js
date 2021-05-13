@@ -1,29 +1,27 @@
-import { isValid } from "../utils/optional";
+import Assert from "../utils/assertions";
+import { avoidNullPointer, isValid } from "../utils/optional";
 
-export default function createColorScheme(...colorScheme) {
+export default function createColorScheme(colorScheme) {
 
-    let stack = isValid(colorScheme) ? [colorScheme] : [];
+    let stack = [];
+
+    if (isValid(colorScheme)) {
+        // console.error("isvalid", colorScheme);
+        colorScheme.forEach(color => stack.push(color))
+        // console.warn("stack", stack);
+    }
 
     return {
         getColor(index) {
-            if (!isValid(stack)) return undefined;
-            if (index >= stack.length) return undefined;
-            if (index < 0) return undefined;
-            return stack[index];
+            return avoidNullPointer(stack, index);
         },
         setColorAt(index, color) {
-            if (color instanceof String) {
-                stack[index] = color;
-            } else {
-                console.error("The color argument must be a String");
-            }
+            Assert.isString(color);
+            stack[Number(index)] = color;
         },
         addColor(color) {
-            if (color instanceof String) {
-                stack.push(color);
-            } else {
-                console.error("The color argument must be a String");
-            }
+            Assert.isString(color);
+            stack.push(color);
         }
     }
 }

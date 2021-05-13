@@ -1,96 +1,60 @@
 import React from "react";
-import NobbleLogChart from "../../nobble-common-demo/components/logchart/logchart";
+import { NobbleAutocomplete } from "../../nobble-forms-demo/components/autocomplete/autocomplete";
+import NobbleAccordionPanel from "../../nobble-web-demo/components/accordion-panel/accordion-panel";
+import System from "../../services/system";
 import "./ztest.css";
-import { webSocket } from "rxjs/webSocket";
 
-/**
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * O SEU PROBLEMA É O SEGUINTE. VOCÊ PRECISA COMPARTILHAR OS DADOS
- * ATRAVÉS DO PROPS. REMOVA A CONSTRUÇÃO DOS LOGS DE DENTRO DO
- * LOG-CHART. MONTE-OS AQUI PARA NÃO GASTAR MEMÓRIA E COMPARTILHE-OS.
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- */
+const paths = {
+    search: "dashboard/search-autocomplete"
+}
 
 export default class ZTest extends React.Component {
 
     constructor() {
         super();
         this.state = {
-            show: false,
-            hostData: []
+            searchHints: []
         };
     }
 
-    componentDidMount() {
-        const subject = webSocket({
-            url: "ws://localhost:5000",
-            deserializer: msg => JSON.parse(msg.data),
-        });
+    getAsyncData(state, data) {
+        switch (state) {
+            case "search":
+                System.cachedResources(paths.search, data)
+                    .subscribe(res => this.setState({ searchHints: res }));
+                break;
 
-        subject.next('log-test');
-
-        subject.subscribe(
-            data => {
-                // console.log('message received: ', data);
-                this.addHostData(data)
-            },
-            err => console.log(err),
-            () => console.log('complete')
-        );
-    }
-
-    addHostData(hostData) {
-        let newData = this.state.hostData;
-        newData.push(hostData);
-        this.setState({ hostData: newData });
-    }
-
-    getHostData() {
-
-    }
-
-
-    floatBoxChange(action) {
-        console.log("TEST::floatBoxChange");
-        this.show = action.action === "mouse-down" ? true : false;
-    }
-
-    manualChange(value) {
-        console.log("SHOW", this.state.show);
-        this.setState({ show: value })
-    }
-
-    actionDivOutput(action) {
-        this.setState({ show: action.trigger === "mouseover" });
+            default:
+                break;
+        }
     }
 
     render() {
+        const $ = this.state;
         return (
             <div className="ztest-container">
 
-                <NobbleLogChart data={this.state.hostData} 
-                    style={{ height: "450px" }} 
-                    live={true}
-                />
+                Hello World
 
+                <NobbleAutocomplete async={(value) => this.getAsyncData("search", value)} values={$.searchHints}>
+                    <div className="form-item-icon">
+                        <span class="material-icons">search</span>
+                    </div>
+                </NobbleAutocomplete>
+
+                <NobbleAccordionPanel title="Testing Accordion">
+                    <div style={{ display: "flex", flexDirection: "column", padding: "10px" }}>
+                        <div>Hello World</div>
+                        <div>Hello World</div>
+                        <div>Hello World</div>
+                        <div>Hello World</div>
+                        <div>Hello World</div>
+                        <div>Hello World</div>
+                        <div>Hello World</div>
+                        <div>Hello World</div>
+                        <div>Hello World</div>
+                    </div>
+                </NobbleAccordionPanel>
             </div>
         )
     }

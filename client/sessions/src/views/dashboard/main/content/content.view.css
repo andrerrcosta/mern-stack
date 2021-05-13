@@ -1,0 +1,40 @@
+.dashboard-main-data-panel {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #f9f9fc;
+}
+
+.dashboard-main-data-panel-empty {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #f9f9fc;
+  color: #595d6e;
+}
+
+.dashboard-main-data-panel-error {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #f9f9fc;
+}
+
+.dashboard-main-data-panel-error-status {
+  font-size: 35px;
+  color: #212529;
+  margin-bottom: 15px;
+}
+
+.dashboard-main-data-panel-error-message {
+  font-size: 25px;
+  color: #212529;
+  margin-top: 15px;
+}
+

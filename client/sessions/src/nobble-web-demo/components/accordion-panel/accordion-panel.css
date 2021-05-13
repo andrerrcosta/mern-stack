@@ -1,0 +1,29 @@
+:root {
+  --colorA-accordion-panel: #f5f5f5;
+  --colorB-accordion-panel: #ffffff;
+  --colorC-accordion-panel: #595d6e;
+  --colorD-accordion-panel: #cbd3de;
+  --colorE-accordion-panel: #212529;
+  --colorF-accordion-panel: #dfff28;
+}
+
+.nobble-accordion-panel-demo-container {
+  border: 1px solid var(--colorA-accordion-panel, #f5f5f5);
+  background: var(--colorB-accordion-panel, #ffffff);
+  color: var(--colorC-accordion-panel, #595d6e);
+  box-shadow: 0px 1px 15px 1px rgba(69, 65, 78, 0.08);
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+}
+
+.nobble-accordion-panel-demo-header {
+  padding: 10px;
+  border-bottom: 1px solid var(--colorA-accordion-panel, #f5f5f5);
+}
+
+.nobble-accordion-panel-demo-content {
+  height: 0;
+  transition: height 0.7s ease-in;
+  overflow: hidden;
+}

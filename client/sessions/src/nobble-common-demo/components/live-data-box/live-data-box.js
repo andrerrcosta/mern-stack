@@ -4,11 +4,15 @@ import Stylist from "../../services/css.service";
 import { Px } from "../../utils/formatters";
 import { isValid, Undefined } from "../../utils/optional";
 import "./live-data-box.css";
+import createColorScheme from "../../models/color-scheme";
 
 export class NobbleLiveDataBox extends Customizable {
 
     constructor(props) {
         super(props, "nobble-live-data-box");
+        this.state = {
+            colorScheme: createColorScheme(this.props.colorScheme)
+        }
     }
 
     componentDidMount() {
@@ -18,9 +22,17 @@ export class NobbleLiveDataBox extends Customizable {
 
     setDefaultStyle() {
         let p = this.props;
+        let $ = this.state;
         this.parent.style.cssText = Stylist
-            .addStyle("overflow", isValid(p.flow)
-                ? p.flow === "right" ? "auto hidden" : "hidden auto" : "auto"
+            .addProperty("--colorA-live-data-box", $.colorScheme.getColor(0))
+            .addProperty("--colorB-live-data-box", $.colorScheme.getColor(1))
+            .addProperty("--colorC-live-data-box", $.colorScheme.getColor(2))
+            .addProperty("--colorD-live-data-box", $.colorScheme.getColor(3))
+            .addProperty("--colorE-live-data-box", $.colorScheme.getColor(4))
+            .addProperty("--colorF-live-data-box", $.colorScheme.getColor(5))
+            .addStyle("overflow", isValid(p.flow) ?
+                Undefined(p.overflow, p.flow === "right" ? "auto hidden" : "hidden auto")
+                : "auto"
             ).getStyle("STRING");
     }
 
@@ -35,7 +47,7 @@ export class NobbleLiveDataBox extends Customizable {
                 .addStyle(size, Px(t * Number(Undefined(p.rate, 5))))
                 .getStyle("STRING");
 
-            this.parent.scrollTo(this.parent.offsetWidth, 0);
+            this.parent.scrollTo(this.parent.offsetWidth, this.parent.scrollTop);
         })
     }
 

@@ -1,96 +1,68 @@
-import React from "react";
+import React, { useState } from "react";
 import BImg from "../../nobble-common-demo/components/b-img/b-img";
-import CustomButton from "../../form-items/button/button";
-import CustomInput from "../../form-items/input/custom-input";
+import { NobbleFormGroupDemo } from "../../nobble-forms-demo/components/form-group/form-group";
+import { NobbleInput } from "../../nobble-forms-demo/components/input/input";
+import NobbleSubmitButton from "../../nobble-forms-demo/components/submit/submit";
+import createFormGroup from "../../nobble-forms-demo/models/forms/form-group.model";
+import { FormItem } from "../../nobble-forms-demo/models/forms/form-item.model";
+import createValidators from "../../nobble-forms-demo/models/forms/validators.model";
 import "./login.view.css";
 
+const LoginView = (props) => {
 
-export default class LoginView extends React.Component {
+    const [processing, setProcessing] = useState(false);
 
-    constructor() {
-        super();
-        this.state = {
-            processing: false,
-            username: "",
-            password: "",
-            currentScreen: 0,
+    const formGroup = createFormGroup(
+        new FormItem("username", "", createValidators().string().min(3).max(40).required()),
+        new FormItem("password", "", createValidators().string().min(3).max(40).required())
+    );
+
+    const login = (form) => {
+        if (form.isValid) {
+            setProcessing(true);
+            props.action({ action: "login", value: formGroup.toModel() })
         }
     }
 
-    login = () => {
-        this.setState({ processing: true });
-        this.props.action({
-            action: "login", value: {
-                username: this.state.username,
-                password: this.state.password
-            }
-        })
-    }
+    return (
+        <div className="login-content">
+            <section>
+                <div className="login-header"
+                    style={{ fontSize: "20px", fontWeight: "700", color: '#32597d' }}>
+                    Login Page
+                </div>
+                <div className="login-header">
+                    <BImg source="assets/logos/001.jpg" width="130" height="130" radius="50%"></BImg>
+                </div>
 
-    fetchForm = (value, formName) => {
-        // console.log("FETCH FORM", value, formName);
-        switch (formName) {
-            case "username":
-                this.setState({ username: value });
-                break;
-
-            case "password":
-                this.setState({ password: value });
-                break;
-
-            default: break;
-        }
-    }
-
-    changeScreen = (screen) => {
-        console.log("Changing to screen", screen);
-        this.props.action({ action: "change-screen", value: screen });
-    }
-
-
-    render() {
-        const $ = this.state;
-        return (
-
-            <div className="login-content">
-                <section>
-                    <div className="login-header"
-                        style={{ fontSize: "20px", fontWeight: "700", color: '#32597d' }}>
-                        Login Page
-                                </div>
-                    <div className="login-header">
-                        <BImg source="assets/logos/001.jpg" width="130" height="130" radius="50%"></BImg>
-                    </div>
-
-                    <CustomInput placeholder="youremail@email.com" label="Username"
-                        getValue={(e) => this.fetchForm(e, "username")}
-                    />
-                    <CustomInput placeholder="password"
-                        label="Password"
-                        type="Password"
-                        getValue={(e) => this.fetchForm(e, "password")}
-                    />
-                    <CustomButton label="Sign-In" background="#24385b" color="white" onClick={this.login}>
-                        {$.processing ?
-                            <img src="assets/default000.gif" style={{ width: "25px", height: "25px" }} alt="" /> :
+                <NobbleFormGroupDemo formGroup={formGroup} action={(form) => login(form)}>
+                    <NobbleInput placeholder="youremail@email.com" label="Username" action={(e) => formGroup.set("username", e.value)} />
+                    <NobbleInput password placeholder="password" label="Password" action={(e) => formGroup.set("password", e.value)} />
+                    <NobbleSubmitButton label="Sign-In" style={{ marginTop: "10px", height: "38px" }} 
+                        colorScheme={["#212529", "#212529", "#ffffff"]}>
+                        {processing ?
+                            <img src="assets/default000.gif" style={{ width: "20px", height: "20px" }} alt="" /> :
                             <span className="material-icons" style={{ fontSize: "18px" }}>login</span>
                         }
-                    </CustomButton>
-                </section>
-                <section>
-                    {/* <div>{$$.username} - {$$.password}</div> */}
-                    <div className="login-options">
+                    </NobbleSubmitButton>
+                </NobbleFormGroupDemo>
+            </section>
+            <section>
+                <div className="login-options">
 
-                        <div className="link"
-                            style={{ marginRight: "10px" }}
-                        >
-                            Forgot password?
+                    <div className="link"
+                        style={{ marginRight: "10px" }}
+                    >
+                        Forgot password?
                                     </div>
-                        <div className="link" onClick={() => this.changeScreen(1)}>Don't have an account? Sign Up</div>
+                    <div className="link" onClick={() => props.action({ action: "change-screen", value: 1 })}>
+                        Don't have an account? Sign Up
                     </div>
-                </section>
-            </div>
+                </div>
+            </section>
+        </div>
 
-        );
-    }
+    );
 }
+
+export default LoginView;

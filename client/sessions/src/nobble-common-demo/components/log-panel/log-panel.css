@@ -1,0 +1,129 @@
+:root {
+  --log-panel-colorA: #f8f8f8;
+  --log-panel-colorB: #ffffff;
+  --log-panel-colorC: #212529;
+  --log-panel-colorD: #27b139;
+  --log-panel-colorE: gold;
+  --log-panel-colorF: #f40303;
+  --log-panel-colorG: #03a9f4;
+  --log-panel-colorH: #ff6868;
+}
+
+.nobble-log-panel-demo-container {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  height: 100%;
+  overflow: hidden;
+  font-family: "Poppins";
+  font-size: 13px;
+  cursor: default;
+}
+
+.nobble-log-panel-demo-header {
+  padding: 5px;
+  font-family: "Poppins";
+  font-size: 12px;
+  color: var(--log-panel-colorC, #212529);
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.nobble-log-panel-demo-content {
+  max-width: 100%;
+  overflow: hidden auto;
+}
+
+.nobble-log-panel-demo-log-header {
+  font-size: 12px;
+}
+
+.nobble-log-panel-demo-log {
+  display: flex;
+  flex-direction: column;
+  background: var(--log-panel-colorA, #f8f8f8);
+  color: var(--log-panel-colorC, #212529);
+  margin: 5px 5px 0px 0px;
+  border-radius: 3px;
+  padding: 10px;
+  opacity: .8;
+}
+
+.nobble-log-panel-demo-log:hover {
+  opacity: 1;
+}
+
+.nobble-log-panel-demo-log-info {
+  display: flex;
+  flex-direction: column;
+  background: var(--log-panel-colorE, gold);
+  color: var(--log-panel-colorC, #212529);
+  margin: 5px 5px 0px 0px;
+  border-radius: 3px;
+  padding: 10px;
+  opacity: .8;
+}
+
+.nobble-log-panel-demo-log-info:hover {
+  opacity: 1;
+}
+
+.nobble-log-panel-demo-log-critical {
+  display: flex;
+  flex-direction: column;
+  background: var(--log-panel-colorF, #f40303);
+  color: var(--log-panel-colorA, #f8f8f8);
+  margin: 5px 5px 0px 0px;
+  border-radius: 3px;
+  padding: 10px;
+  opacity: .8;
+}
+
+.nobble-log-panel-demo-log-critical:hover {
+  opacity: 1;
+}
+
+.nobble-log-panel-demo-log-debug {
+  display: flex;
+  flex-direction: column;
+  background: var(--log-panel-colorA, #f8f8f8);
+  color: var(--log-panel-colorC, #212529);
+  margin: 5px 5px 0px 0px;
+  border-radius: 3px;
+  padding: 10px;
+  opacity: .8;
+}
+
+.nobble-log-panel-demo-log-debug:hover {
+  opacity: 1;
+}
+
+.nobble-log-panel-demo-log-error {
+  display: flex;
+  flex-direction: column;
+  background: var(--log-panel-colorH, #ff6868);
+  color: var(--log-panel-colorA, #f8f8f8);
+  margin: 5px 5px 0px 0px;
+  border-radius: 3px;
+  padding: 10px;
+  opacity: .8;
+}
+
+.nobble-log-panel-demo-log-error:hover {
+  opacity: 1;
+}
+
+.nobble-log-panel-demo-log-server-error {
+  display: flex;
+  flex-direction: column;
+  background: var(--log-panel-colorH, #ff6868);
+  color: var(--log-panel-colorA, #f8f8f8);
+  margin: 5px 5px 0px 0px;
+  border-radius: 3px;
+  padding: 10px;
+  opacity: .8;
+}
+
+.nobble-log-panel-demo-log-server-error:hover {
+  opacity: 1;
+}

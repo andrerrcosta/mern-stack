@@ -1,0 +1,70 @@
+:root {
+  --responsive-menu-colorA: #f5f5f5;
+  --responsive-menu-colorB: #ffffff;
+  --responsive-menu-colorC: #212529;
+  --responsive-menu-colorD: #595d6e;
+  --responsive-menu-colorE: #cbd3de;
+  --responsive-menu-colorF: #f8f8f8;
+}
+
+.nobble-responsive-menu-demo-container {
+  display: flex;
+  width: 100%;
+}
+
+.nobble-responsive-menu-demo-top {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--responsive-menu-colorA, #f5f5f5);
+  flex-flow: wrap;
+}
+
+.nobble-responsive-menu-demo-top-left {
+  cursor: default;
+  pointer-events: none;
+}
+
+.nobble-responsive-menu-demo-bottom {
+  display: flex;
+  flex-flow: nowrap;
+  animation-name: fade-in;
+  animation-duration: 1s;
+}
+
+.nobble-responsive-menu-demo-bottom-wrap {
+  display: flex;
+  animation-name: fade-in;
+  animation-duration: 1s;
+}
+
+.nobble-responsive-menu-demo-bottom-wrap-menu-icon {
+  display: flex;
+  align-items: center;
+  padding: 7px;
+  width: 100%;
+  cursor: pointer;
+  margin: 3px 0;
+  border-radius: 3px;
+  justify-content: center;
+}
+
+.nobble-responsive-menu-demo-bottom-wrap-menu-icon:hover {
+  background: var(--responsive-menu-colorF, #f8f8f8);
+}
+
+.nobble-responsive-menu-demo-bottom-wrap-menu-content {
+  padding: 10px;
+  border: 1px solid var(--responsive-menu-colorA, #f5f5f5);
+  box-shadow: rgb(69 65 78 / 10%) 0px 1px 15px 1px;
+  background: var(--responsive-menu-colorB, #ffffff);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

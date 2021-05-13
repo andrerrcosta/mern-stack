@@ -18,6 +18,7 @@ export default class NobbleFloatBox extends Customizable {
             left: this.props.left,
             triggerOption: "value"
         }
+        
     }
 
     renderChildren = () => {
@@ -40,25 +41,29 @@ export default class NobbleFloatBox extends Customizable {
     }
 
     buildEventListeners() {
+        
         let trigger = getElement(this.props.trigger);
         trigger.addEventListener("mouseover", () => {
             this.toggleFloatBox("open")
         });
+
         trigger.addEventListener("mouseout", () => {
             this.toggleFloatBox("close")
         });
-    }
 
-    componentWillUnmount() {
-        if (isValidElement(this.props.trigger)) {
-            let trigger = getElement(this.props.trigger);
-            trigger.removeEventListener("mouseover", () => {
-                this.toggleFloatBox("open")
-            });
-            trigger.removeEventListener("mouseout", () => {
-                this.toggleFloatBox("close")
-            });
-        }
+        this._destroyer.subscribe((destroy) => {
+            if(destroy) {
+                if (isValidElement(this.props.trigger)) {
+                    let trigger = getElement(this.props.trigger);
+                    trigger.removeEventListener("mouseover", () => {
+                        this.toggleFloatBox("open")
+                    });
+                    trigger.removeEventListener("mouseout", () => {
+                        this.toggleFloatBox("close")
+                    });
+                }
+            }
+        })
     }
 
     componentDidUpdate() {

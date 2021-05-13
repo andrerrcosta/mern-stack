@@ -1,62 +1,35 @@
-
-import React from "react";
-import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-dom";
+import React, { lazy, Suspense, useEffect, useState } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
-import { NobbleWallet } from "./nobble-common-demo/services/nobble-wallet.module";
+import { RedirectableRoute } from "./nobble-common-demo/routing/routes/routes";
+import { NobbleWallet as Wallets } from "./nobble-common-demo/services/nobble-wallet.module";
 import NotFoundView from "./views/404/404";
-import Dashboard from "./views/dashboard/dashboard.view";
 import HomeView from "./views/home/home.view";
-import ZTest from "./views/ztest/ztest";
 
-class App extends React.Component {
+const App = () => {
 
-  constructor() {
-    super();
-    this.state = { auth: false, wallet: undefined };
-  }
+  const [auth, setAuth] = useState(false);
 
-  componentDidMount() {
-    let subscription = NobbleWallet.subscribe("authentication", (res) => {
-      console.log(res);
-      this.setState({ auth: res.authorized });
-    });
-    this.setState({ wallet: subscription })
-  }
+  useEffect(() => {
+    let $auth = Wallets.bindUseStateAndCall("authentication", setAuth);
+    return () => Wallets.unsubscribe($auth);
+  }, [])
 
-  render() {
-    return (
-      <div className="container" >
+  const Dashboard = lazy(() => import("./views/dashboard/dashboard.view"));
+
+  return (
+    <div className="container" >
+      <Suspense fallback={<div>Loading...</div>}>
         <Router>
           <Switch>
-            <LoginRoute exact path="/" component={HomeView} auth={this.state.auth} />
-            <Route exact path="/test" component={ZTest} />
-            <PrivateRoute exact path="/dashboard" component={Dashboard} auth={this.state.auth} />
+            <RedirectableRoute exact path="/" component={HomeView} redirectTo="/dashboard" on={auth?.data?.auth} />
+            <RedirectableRoute path="/dashboard" component={Dashboard} redirectTo="/" on={!auth?.data?.auth} />
             <Route component={NotFoundView} />
           </Switch>
         </Router>
-      </div>
-    );
-  }
-}
-
-const PrivateRoute = ({ auth, component: Component, ...rest }) => {
-  return (
-    <Route {...rest}
-      render={
-        props => auth ? (<Component {...props} />) : (<Redirect to={{ pathname: "/" }} />)
-      }
-    />
-  )
-}
-
-const LoginRoute = ({ auth, component: Component, ...rest }) => {
-  return (
-    <Route {...rest}
-      render={
-        props => auth ? (<Redirect to={{ pathname: "/dashboard" }} />) : (<Component {...props} />)
-      }
-    />
-  )
+      </Suspense>
+    </div>
+  );
 }
 
 export default App;

@@ -1,7 +1,7 @@
+import React from "react";
 import Customizable from "../../interfaces/customizable";
 import { Pct, Percent } from "../../utils/formatters";
-import React from "react";
-import "./runnable-screen.css"
+import "./runnable-screen.css";
 
 export default class NobbleRunnableScreen extends Customizable {
 
@@ -34,7 +34,6 @@ export default class NobbleRunnableScreen extends Customizable {
     }
 
     render() {
-        const $ = this.props;
         return (
             <div className={this.addClass("container")}
                 id={this._uid}

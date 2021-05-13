@@ -1,0 +1,25 @@
+:root {
+    --colorA-image-panel: #f5f5f5;
+    --colorB-image-panel: #ffffff;
+    --colorC-image-panel: #595d6e;
+    --colorD-image-panel: #cbd3de;
+    --border-radius-image-panel: 0;
+}
+
+.nobble-image-panel-container {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--colorA-image-panel, #f5f5f5);
+    background: var(--colorB-image-panel, #ffffff);
+    color: var(--colorC-image-panel, #595d6e);
+    border-radius: var(--border-radius-image-panel, 0);
+    overflow: auto;
+}
+
+.nobble-image-panel-image {
+    width: 100%;
+}
+
+.nobble-image-panel-content {
+    width: 100%;
+}

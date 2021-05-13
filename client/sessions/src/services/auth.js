@@ -1,17 +1,14 @@
-import { ajax } from 'rxjs/ajax'
-
+import { ajax } from 'rxjs/ajax';
 const baseUrl = 'http://localhost:5000';
 
 export default class Auth {
 
-    static login(username, password) {
+    static login(model) {
         return ajax({
             method: "POST",
             url: `${baseUrl}/auth/login`,
-            body: {
-                username: username,
-                password: password
-            }
+            withCredentials: true,
+            body: model
         });
     }
 
@@ -24,6 +21,14 @@ export default class Auth {
                 name: body.name,
                 password: body.password
             }
+        });
+    }
+
+    static recoverSession() {
+        return ajax({
+            method: "POST",
+            url: `${baseUrl}/auth/session`,
+            withCredentials: true,
         });
     }
 }
