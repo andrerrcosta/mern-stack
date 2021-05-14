@@ -9,7 +9,7 @@ const DevPlaygroundSchema = new Schema({
     }]
 });
 
-const DevPlaygroundValidator = Joi.object({
+const DevPlaygroundValidator = Joi.object().keys({
     users: Joi.array().items(UserRegisterValidator)
 });
 

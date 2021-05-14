@@ -22,22 +22,19 @@ class SessionDbService {
             ApiCommunication.internals("dev-error", Identifier.auto(), Errors.NOT_IMPLEMENTED,
                 { message: "demo-version", data: cfg.db }));
 
-        if (!isValid(cfg.user)) return ApiCommunication.response(false, 500, true,
-            Errors.SERVER_ERROR, ApiCommunication.internals("dev-error", Identifier.auto(), "No user collection provided"));
-
         if (!isValid(cfg.model)) return ApiCommunication.response(false, 500, true,
             Errors.SERVER_ERROR, ApiCommunication.internals("dev-error", Identifier.auto(), "No user model provided"));
 
         const query = ObjectMapper.builder()
-            .add("_id", cfg.userCollectionId)
+            .add("_id", cfg.collectionId)
             .add(cfg.queries.username, username)
             .getObject();
+
         const projection = ObjectMapper.builder().add(cfg.queries.projection, 1).getObject();
 
         try {
             const response = await cfg.model.findOne(query, projection);
             const user = isValid(cfg.collection) ? ObjectMapper.getComposed(response, cfg.user)[0] : response;
-            NobbleTerminal.info("DBSERVICE:byUsername", cfg.user, user);
 
             return isValid(user) ? ApiCommunication.response(true, 200, false, Success.USER_FOUND,
                 ApiCommunication.internals("debug", Identifier.auto(), Infos.USER_FOUND, user)) :
@@ -63,9 +60,6 @@ class SessionDbService {
         if (cfg.db !== "mongodb") return ApiCommunication.response(false, 501, true, Errors.NOT_IMPLEMENTED,
             ApiCommunication.internals("dev-error", Identifier.auto(), Errors.NOT_IMPLEMENTED,
                 { message: "demo-version", data: cfg.db }));
-
-        if (!isValid(cfg.user)) return ApiCommunication.response(false, 500, true,
-            Errors.SERVER_ERROR, ApiCommunication.internals("dev-error", Identifier.auto(), "No user collection provided"));
 
         if (!isValid(cfg.model)) return ApiCommunication.response(false, 500, true,
             Errors.SERVER_ERROR, ApiCommunication.internals("dev-error", Identifier.auto(), "No user model provided"));
@@ -101,21 +95,24 @@ class SessionDbService {
  */
 const createConfig = () => {
     const config = Profiles.getProperty("sessionManager", process.env.NODE_ENV);
+    const nestedUser = Array.isArray(config.authentication?.userCollection) &&
+        config.authentication?.userCollection?.length > 1;
+
     const output = ObjectMapper.builder()
-        .add("db", Undefined(config.db, "mongodb"))
-        .add("mapper", Undefined(config.authentication?.modelMapper, { username: "username", password: "password" }))
-        .add("model", config.authentication.userModel)
-        .add("collection", Array.isArray(config.authentication?.userCollection) &&
-            config.authentication?.userCollection?.length > 1 ? config.authentication?.userCollection[0] : undefined)
-        .add("user", Array.isArray(config.authentication?.userCollection) &&
-            config.authentication?.userCollection?.length > 1 ? config.authentication?.userCollection?.slice(1)?.join(".")
-            : config.authentication?.userCollection)
+        .compose(Undefined(config?.authentication?.modelMapper?.username, "username"), "mapper", "username")
+        .compose(Undefined(config?.authentication?.modelMapper?.password, "password"), "mapper", "password")
+        .add("db", Undefined(config?.db, "mongodb"))
+        .add("model", config?.authentication?.userModel)
+        .add("collectionId", config?.authentication?.userCollectionId)
+        .add("collection", nestedUser ? config?.authentication?.userCollection[0] : undefined)
+        .add("user", nestedUser ? config.authentication?.userCollection?.slice(1)?.join(".") : undefined)
         .getObject();
+
     return ObjectMapper
         .add(output, "queries", {
             username: isValid(output.collection) ? `${output.user}.${output.mapper.username}` : output.mapper.username,
-            id: `${output.user}._id`,
-            projection: `${output.user}.$`
+            id: isValid(output.collection) ? `${output.user}._id` : "_id",
+            projection: isValid(output.collection) ? `${output.user}.$` : {}
         });
 }
 

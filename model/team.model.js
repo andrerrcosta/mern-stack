@@ -24,13 +24,13 @@ const TeamModel = new Schema({
     }
 );
 
-const TeamValidation = Joi.object({
+const TeamValidation = Joi.object().keys({
     leader: Joi.string().max(24).required(),
     team: Joi.array().items(Joi.string().max(24)).max(5),
     createdAt: Joi.date()
 });
 
-const TeamUpdateValidation = Joi.object({
+const TeamUpdateValidation = Joi.object().keys({
     leader: Joi.string().max(24),
     team: Joi.array().items(Joi.string().max(24)).max(5),
     createdAt: Joi.date()

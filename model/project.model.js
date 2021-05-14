@@ -57,7 +57,7 @@ const ProjectSchema = new Schema({
     }
 );
 
-const ProjectValidator = Joi.object({
+const ProjectValidator = Joi.object().keys({
     collectionRef: Joi.string().max(24).required(),
     company: Joi.string().max(24).required(),
     name: Joi.string().min(6).max(30).required(),
@@ -69,7 +69,7 @@ const ProjectValidator = Joi.object({
     budget: Joi.number().min(1000).required(),
 });
 
-const ProjectUpdateValidator = Joi.object({
+const ProjectUpdateValidator = Joi.object().keys({
     collectionRef: Joi.string().max(24),
     company: Joi.string().max(24),
     name: Joi.string().min(6).max(30),

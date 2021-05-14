@@ -14,7 +14,7 @@ const DashboardQueryModel = new Schema({
  * This query can be an vulnerability point if not properly
  * sanitized and validated.
  */
-const DashboardQueryValidation = Joi.object({
+const DashboardQueryValidation = Joi.object().keys({
     filters: Joi.array().items(Joi.string().max(20)).max(5),
     field: Joi.string().max(20),
     value: Joi.string().max(50)

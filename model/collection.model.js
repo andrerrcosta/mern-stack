@@ -35,7 +35,7 @@ const CollectionSchema = new Schema({
     }
 );
 
-const CollectionValidator = Joi.object({
+const CollectionValidator = Joi.object().keys({
     user: Joi.string().max(24).required(),
     companies: Joi.array().items(Joi.string().max(24)),
     projects: Joi.array().items(Joi.string().max(24)),
@@ -43,7 +43,7 @@ const CollectionValidator = Joi.object({
     createdAt: Joi.date()
 });
 
-const CollectionUpdateValidator = Joi.object({
+const CollectionUpdateValidator = Joi.object().keys({
     user: Joi.string().max(24),
     companies: Joi.array().items(Joi.string().max(24)),
     projects: Joi.array().items(Joi.string().max(24)),
