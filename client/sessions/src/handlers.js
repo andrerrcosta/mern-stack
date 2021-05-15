@@ -28,7 +28,6 @@ export default class Handlers {
         System.resources("system/session")
             .subscribe(
                 next => {
-                    console.error("Auth Received", next);
                     Wallets.set("authentication", next.response)
                 },
                 error => Wallets.setQueryState("authentication").error(error)

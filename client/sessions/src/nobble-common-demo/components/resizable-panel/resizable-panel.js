@@ -28,6 +28,7 @@ export class NobbleResizablePanelDemo extends Customizable {
 
     componentDidMount() {
         if (isValid(this.props.minimizeAuto)) {
+            this.forceMinimizedChildren();
             this.useResizer(res => { if (res === "end") this.forceMinimizedChildren(); });
         }
     }

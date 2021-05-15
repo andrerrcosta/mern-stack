@@ -44,7 +44,7 @@ const HomeView = () => {
                 {
                     ENV === "development" ?
                         <NobbleAccordionPanel title="Dev Panel" style={{
-                            borderRadius: "5px", margin: "auto 0", width: "100%", marginRight: "10px"
+                            borderRadius: "5px", margin: "auto 0", width: "100%", marginRight: "10px",
                         }}>
                             <NobbleDataPanelDemo default={emptyResponse(devData.data)}
                                 isLoading={devData?.state?.loading}

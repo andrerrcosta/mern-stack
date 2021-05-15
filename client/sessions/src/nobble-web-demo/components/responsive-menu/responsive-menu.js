@@ -44,6 +44,7 @@ export default class NobbleResponsiveMenuDemo extends Customizable {
     }
 
     componentDidUpdate() {
+        this.getWrapCondition();
         this.checkResponsiveBehaviour();
     }
 
