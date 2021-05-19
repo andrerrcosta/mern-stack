@@ -1,7 +1,7 @@
 # mern-stack
 Mern Stack and Docker
 
-If you wanna run you will just need a mongodb without password running on 27017
+If you want to run you just need a mongodb without password running on 27017
 
 * yarn install (on root)
 * yarn install (on client/sessions)
