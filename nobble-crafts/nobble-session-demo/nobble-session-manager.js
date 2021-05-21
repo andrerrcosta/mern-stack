@@ -4,7 +4,7 @@ const Terminal = require("../nobble-common-demo/utils/terminal.utils");
 const Profiles = require("../nobble-common-demo/dev-tools/profile/profiles");
 const { isValid } = require("../nobble-common-demo/utils/optional");
 const { pathMatcher } = require("../nobble-common-demo/utils/http");
-const ApiCommunication = require("../nobble-common-demo/web/communication/api");
+const Api = require("../nobble-common-demo/web/communication/api");
 const ObjectMapper = require("../nobble-common-demo/utils/object-mapper");
 const CacheServer = require("../nobble-data-demo/cache-server");
 
@@ -18,7 +18,7 @@ class NobbleSessionManager {
     static configFor = (profile) => {
         Assert.notNull(profile);
         Assert.isString(profile);
-        let config = Object.assign({}, sessionConfig);
+        let config = {};
         config.profile = profile;
         Profiles.setProperty("sessionManager", config, profile);
         config = Profiles.get(profile);
@@ -34,6 +34,16 @@ class NobbleSessionManager {
     static handler = async (request, response, next) => {
 
         const config = Profiles.getProperty("sessionManager", process.env.NODE_ENV);
+
+        if (!ObjectMapper.hasAnyProperty(config.middlewares, "authentication", "authorization", "session")) return next();
+
+        if (ObjectMapper.hasProperties(config.authentication)) {
+            if (!isValid(config.authorization.private)) config.authorization.private = [];
+            if (!isValid(config.authorization.public)) config.authorization.public = [];
+        }
+
+        Api.debug(request, "Checking Profile", config)
+
         const isPrivate = pathMatcher(request.originalUrl, ...config.authorization.private).value;
         const isPublic = pathMatcher(request.originalUrl, ...config.authorization.public).value;
         const authRequest = request.originalUrl === config.authentication.route;
@@ -46,7 +56,7 @@ class NobbleSessionManager {
         /**
          * Private path
          */
-        let mwresponse = ApiCommunication.successful();
+        let mwresponse = Api.successful();
 
         if (authRequest) {
             if (config.middlewares.authentication) {
@@ -60,8 +70,9 @@ class NobbleSessionManager {
             if (config.middlewares.session && mwresponse.doNext) {
                 mwresponse = await NobbleAuth2.session(request, response);
             }
+            Terminal.info("MIDDLEWARES", mwresponse);
             if (mwresponse.error) return response.status(mwresponse.status).send(mwresponse.message);
-
+            Terminal.info("MIDDLEWARES", "Dping Next");
             return next();
         }
 

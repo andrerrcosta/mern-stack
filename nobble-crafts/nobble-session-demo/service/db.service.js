@@ -2,7 +2,7 @@ const Profiles = require("../../nobble-common-demo/dev-tools/profile/profiles");
 const Identifier = require("../../nobble-common-demo/service/user-identifier.service");
 const ObjectMapper = require("../../nobble-common-demo/utils/object-mapper");
 const { isValid, Undefined } = require("../../nobble-common-demo/utils/optional");
-const NobbleTerminal = require("../../nobble-common-demo/utils/terminal.utils");
+const Terminal = require("../../nobble-common-demo/utils/terminal.utils");
 const ApiCommunication = require("../../nobble-common-demo/web/communication/api");
 const { Errors, Infos, Success } = require("../_config/session.constants");
 
@@ -32,8 +32,12 @@ class SessionDbService {
 
         const projection = ObjectMapper.builder().add(cfg.queries.projection, 1).getObject();
 
+        Terminal.info("Query", query);
+        Terminal.info("Projection", projection);
+
         try {
             const response = await cfg.model.findOne(query, projection);
+            Terminal.info("response of find", response);
             const user = isValid(cfg.collection) ? ObjectMapper.getComposed(response, cfg.user)[0] : response;
 
             return isValid(user) ? ApiCommunication.response(true, 200, false, Success.USER_FOUND,
@@ -74,7 +78,7 @@ class SessionDbService {
         try {
             const response = await cfg.model.findOne(query, projection);
             const user = isValid(cfg.collection) ? ObjectMapper.getComposed(response, cfg.user)[0] : response;
-            NobbleTerminal.info("DBSERVICE:byID", cfg.user, user);
+            Terminal.info("DBSERVICE:byID", cfg.user, user);
 
             return isValid(user) ? ApiCommunication.response(true, 200, false, Success.USER_FOUND,
                 ApiCommunication.internals("debug", Identifier.auto(), Infos.USER_FOUND, user)) :

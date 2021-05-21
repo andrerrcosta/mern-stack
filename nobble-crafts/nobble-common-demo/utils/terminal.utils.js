@@ -116,7 +116,25 @@ class NobbleTerminal {
     }
 
     static profile(module, ...message) {
-        console.log(...this.format(process.env.NODE_ENV, module, ...message));
+        // console.log("Trying to profile", process.env.NODE_ENV);
+        let env = String(process.env.NODE_ENV).toUpperCase();
+        switch (env) {
+            case "DEVELOPMENT":
+                console.log("\u001b[38;5;31m%s\x1b[0m", `[${String(module)}][DEVELOPMENT]`, ...message);
+                break;
+
+            case "PRODUCTION":
+                console.log("\u001b[38;5;31m%s\x1b[0m", `[${String(module)}][PRODUCTION]`, ...message);
+                break;
+
+            case "TEST":
+                console.log("\u001b[38;5;31m%s\x1b[0m", `[${String(module)}][TEST]`, ...message);
+                break;
+
+            default:
+                console.log("\u001b[38;5;33m%s\x1b[0m", `[${String(module)}][${env}]`, ...message);
+                break;
+        }
     }
 
     static msg(module, ...message) {

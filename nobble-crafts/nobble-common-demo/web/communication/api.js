@@ -81,7 +81,7 @@ class ApiCommunication {
             message: message,
             internals: internals
         }
-        if (this.currentConfig.terminal) Terminal.response(response);
+        if (this.currentConfig?.terminal) Terminal.response(response);
         return response;
     }
 
@@ -190,12 +190,12 @@ const createConfig = (sharedConfig) => {
 }
 
 const handleCommunication = async (log, type) => {
-    const { storeLogs, terminal, cache } = ApiCommunication.currentConfig;
+    const config = ApiCommunication.currentConfig;
     if (!init.cache) initCacheServer();
-    if (cache) CacheServer.setWithRetry("api-communication", `${log.method}-${Duration.fromNow(0)}`, log);
-    if (storeLogs) storeLog(log);
-    if (terminal) Terminal.log(type, type === 'route' ? { route: log.method, caller: Caller().formatted(4) } : Caller().formatted(4), log);
-    if (ApiCommunication.currentConfig?.killOn?.includes(type)) process.exit(-1);
+    if (config?.cache) CacheServer.setWithRetry("api-communication", `${log.method}-${Duration.fromNow(0)}`, log);
+    if (config?.storeLogs) storeLog(log);
+    if (config?.terminal) Terminal.log(type, type === 'route' ? { route: log.method, caller: Caller().formatted(4) } : Caller().formatted(4), log);
+    if (config?.killOn?.includes(type)) process.exit(-1);
 }
 
 const init = {
