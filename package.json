@@ -31,7 +31,7 @@
     "node-schedule": "^2.0.0",
     "rxjs": "^6.6.6",
     "rxjs-websockets": "^8.0.1",
-    "ws": "^7.4.3"
+    "ws": "^7.4.6"
   },
   "devDependencies": {
     "mocha": "^8.3.2",
